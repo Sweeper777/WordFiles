@@ -1,0 +1,6 @@
+framework module Pods_WordFiles_WordFilesUITests {
+  umbrella header "Pods-WordFiles-WordFilesUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
