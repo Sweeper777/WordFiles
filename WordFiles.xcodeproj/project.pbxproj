@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08B0761C66C6857FE5058F8A /* Pods_WordFiles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4508E1129239FF2B8F8CBCF9 /* Pods_WordFiles.framework */; };
 		0E8FCD4F37AF25D9E43051E6 /* Pods_WordFiles_WordFilesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345E6D1CAD86C37F0644DFD0 /* Pods_WordFiles_WordFilesUITests.framework */; };
+		25EF03B6A003CA1FFCB2D9D4 /* WordEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0B4A837F94075BC04AB6 /* WordEntry.swift */; };
 		5A917DF3031AC10F36BDAA10 /* Pods_WordFilesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5267E483D3D379590F09A91F /* Pods_WordFilesTests.framework */; };
 		5A984FCB254663840014ABB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A984FCA254663840014ABB5 /* AppDelegate.swift */; };
 		5A984FCD254663840014ABB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A984FCC254663840014ABB5 /* SceneDelegate.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1AD228B7B448362F5B94E331 /* Pods-WordFiles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordFiles.debug.xcconfig"; path = "Target Support Files/Pods-WordFiles/Pods-WordFiles.debug.xcconfig"; sourceTree = "<group>"; };
+		25EF0B4A837F94075BC04AB6 /* WordEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordEntry.swift; sourceTree = "<group>"; };
 		345E6D1CAD86C37F0644DFD0 /* Pods_WordFiles_WordFilesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordFiles_WordFilesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4508E1129239FF2B8F8CBCF9 /* Pods_WordFiles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordFiles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46316CF014E4FD2E974FA2DE /* Pods-WordFiles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordFiles.release.xcconfig"; path = "Target Support Files/Pods-WordFiles/Pods-WordFiles.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				5A984FD3254663860014ABB5 /* Assets.xcassets */,
 				5A984FD5254663860014ABB5 /* LaunchScreen.storyboard */,
 				5A984FD8254663860014ABB5 /* Info.plist */,
+				25EF0B4A837F94075BC04AB6 /* WordEntry.swift */,
 			);
 			path = WordFiles;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				5A984FCF254663840014ABB5 /* ViewController.swift in Sources */,
 				5A984FCB254663840014ABB5 /* AppDelegate.swift in Sources */,
 				5A984FCD254663840014ABB5 /* SceneDelegate.swift in Sources */,
+				25EF03B6A003CA1FFCB2D9D4 /* WordEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
