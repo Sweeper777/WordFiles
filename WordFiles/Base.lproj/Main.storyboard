@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,18 +29,27 @@
         <!--My Words-->
         <scene sceneID="Z5M-Pd-RfZ">
             <objects>
-                <tableViewController id="PyE-zT-1aQ" sceneMemberID="viewController">
+                <tableViewController id="PyE-zT-1aQ" customClass="WordListViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KXi-B7-llX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="stR-je-ffR">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="PzK-qg-QTa" style="IBUITableViewCellStyleDefault" id="stR-je-ffR">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="stR-je-ffR" id="Aug-KV-VYv">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PzK-qg-QTa">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -49,12 +59,66 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Words" id="F1L-8l-kfz">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aGM-bE-bv3"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aGM-bE-bv3">
+                            <connections>
+                                <action selector="addTapped" destination="PyE-zT-1aQ" id="cTs-S7-KXL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="qYO-SL-d9M" kind="presentation" identifier="showWordEditor" modalPresentationStyle="formSheet" id="0nO-mb-Kos"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0i-eg-g83" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="u7n-BX-edg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1340" y="75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="x9X-9d-W1c">
+            <objects>
+                <navigationController id="qYO-SL-d9M" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xsl-Pp-BDh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="StZ-eJ-giL" kind="relationship" relationship="rootViewController" id="WbV-HP-13p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dbi-Dc-irS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1340" y="806"/>
+        </scene>
+        <!--New Word-->
+        <scene sceneID="Y5x-aN-Yfu">
+            <objects>
+                <viewController id="StZ-eJ-giL" customClass="WordEditorViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MRA-fw-ItJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PSd-ke-gPg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Word" id="Fuk-Zb-apY">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1lT-Vi-9ax">
+                            <connections>
+                                <action selector="cancelTapped" destination="StZ-eJ-giL" id="xhh-lK-4cm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="7Mj-5Q-a05">
+                            <connections>
+                                <action selector="doneTapped" destination="StZ-eJ-giL" id="Qkq-Es-E9j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="u7n-BX-edg" kind="unwind" identifier="unwindToWordList" unwindAction="unwindFromWordEditor:" id="e71-Bw-4xp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hnl-1c-nw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2180" y="806"/>
         </scene>
     </scenes>
     <resources>
