@@ -24,4 +24,11 @@ class WordListViewController : UITableViewController {
         return cell
     }
 
+    @IBAction func addTapped() {
+        performSegue(withIdentifier: "showWordEditor", sender: nil)
+    }
+
+    @IBAction func unwindFromWordEditor(_ segue: UIStoryboardSegue) {
+        tableView.reloadData()
+    }
 }
