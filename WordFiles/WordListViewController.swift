@@ -7,6 +7,7 @@ class WordListViewController : UITableViewController {
     override func viewDidLoad() {
         words = DataManager.shared.wordEntries
 
+        navigationItem.rightBarButtonItems?.append(editButtonItem)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
