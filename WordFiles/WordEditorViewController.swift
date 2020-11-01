@@ -10,6 +10,11 @@ class WordEditorViewController : FormViewController {
             row.value = ""
         }
 
+        form +++ Section("explanation")
+        <<< TextAreaRow(tagExplanation) { row in
+            row.value = ""
+        }
+
 }
 
 let tagTitle = "title"
