@@ -26,6 +26,24 @@ class WordEditorViewController : FormViewController {
     }
 
     @IBAction func doneTapped() {
+        let values = form.values()
+        let wordEntry = WordEntry()
+        wordEntry.title = values[tagTitle] as? String ?? ""
+        wordEntry.explanation = values[tagExplanation] as? String ?? ""
+        wordEntry.example = values[tagExample] as? String ?? ""
+        do {
+            try DataManager.shared.addWordEntry(wordEntry)
+            performSegue(withIdentifier: "unwindToWordList", sender: nil)
+        } catch DataError.duplicateWord {
+            showError("An entry with the same title already exists!")
+        } catch DataError.noExplanation {
+            showError("Please enter an explanation!")
+        } catch DataError.emptyWord {
+            showError("Please enter a title for this entry!")
+        } catch {
+            showError("An unknown error has occurred!")
+            print(error)
+        }
     }
 
     @IBAction func cancelTapped() {
