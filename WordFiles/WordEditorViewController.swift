@@ -19,6 +19,10 @@ class WordEditorViewController : FormViewController {
         <<< TextAreaRow(tagExample) { row in
             row.value = ""
         }
+    }
+
+    func showError(_ msg: String) {
+        SCLAlertView().showError("Error", subTitle: msg, closeButtonTitle: "OK")
 }
 
 let tagTitle = "title"
