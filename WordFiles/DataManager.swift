@@ -21,6 +21,17 @@ class DataManager {
         _shared = _shared ?? DataManager()
         return _shared!
     }
+
+    func addWordEntry(_ wordEntry: WordEntry) throws {
+        if wordEntry.title.trimmed().isEmpty {
+            throw DataError.emptyWord
+        } else if wordEntry.explanation.trimmed().isEmpty {
+            throw DataError.noExplanation
+        }
+        try realm.write {
+            realm.add(wordEntry)
+        }
+    }
 }
 
 enum DataError : Error {
