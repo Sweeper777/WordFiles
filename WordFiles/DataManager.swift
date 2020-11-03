@@ -41,6 +41,18 @@ class DataManager {
         }
     }
 
+    func updateWordEntry(_ wordEntry: WordEntry, block: (WordEntry) -> Void) throws {
+        try realm.write {
+            block(wordEntry)
+            if wordEntry.title.trimmed().isEmpty {
+                throw DataError.emptyWord
+            } else if wordEntry.explanation.trimmed().isEmpty {
+                throw DataError.noExplanation
+            } else if wordEntries.filter("title == %@", wordEntry.title).count > 0 {
+                throw DataError.duplicateWord
+            }
+        }
+    }
 }
 
 enum DataError : Error {
