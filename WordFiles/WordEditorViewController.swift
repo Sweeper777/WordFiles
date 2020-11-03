@@ -2,22 +2,24 @@ import Eureka
 import SCLAlertView
 
 class WordEditorViewController : FormViewController {
+    var entryToEdit: WordEntry?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         form +++ TextRow(tagTitle) { row in
             row.title = "Title"
-            row.value = ""
+            row.value = entryToEdit?.title
         }
 
         form +++ Section("explanation")
         <<< TextAreaRow(tagExplanation) { row in
-            row.value = ""
+            row.value = entryToEdit?.explanation
         }
 
         form +++ Section("example")
         <<< TextAreaRow(tagExample) { row in
-            row.value = ""
+            row.value = entryToEdit?.example
         }
     }
 
