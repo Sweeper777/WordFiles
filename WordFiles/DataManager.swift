@@ -34,6 +34,13 @@ class DataManager {
             realm.add(wordEntry)
         }
     }
+
+    func deleteWordEntry(_ wordEntry: WordEntry) throws {
+        try realm.write {
+            realm.delete(wordEntry)
+        }
+    }
+
 }
 
 enum DataError : Error {
