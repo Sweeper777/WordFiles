@@ -7,6 +7,12 @@ class WordEditorViewController : FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let entryTitle = entryToEdit?.title {
+            title = "Editing '\(entryTitle)'"
+        } else {
+            title = "New Entry"
+        }
+
         form +++ TextRow(tagTitle) { row in
             row.title = "Title"
             row.value = entryToEdit?.title
