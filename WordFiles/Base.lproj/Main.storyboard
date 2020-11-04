@@ -67,12 +67,48 @@
                     </navigationItem>
                     <connections>
                         <segue destination="qYO-SL-d9M" kind="presentation" identifier="showWordEditor" modalPresentationStyle="formSheet" id="0nO-mb-Kos"/>
+                        <segue destination="HKA-ql-6Wx" kind="show" id="lap-vx-3DX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0i-eg-g83" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="u7n-BX-edg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1340" y="75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8ox-1t-Dg7">
+            <objects>
+                <viewController id="HKA-ql-6Wx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Shu-Fl-hQd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="TLG-d6-Y2r"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FOb-7U-ISZ"/>
+                    <connections>
+                        <segue destination="0AN-OH-l9b" kind="show" id="rIh-iX-Ap0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7zB-cZ-Zec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2180" y="75"/>
+        </scene>
+        <!--Entry View Controller-->
+        <scene sceneID="n3O-Ne-4fC">
+            <objects>
+                <viewController id="0AN-OH-l9b" customClass="EntryViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uhl-Ag-4PE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="K7d-hF-DU9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BVq-o7-qsS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qr5-gQ-Kqs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2998" y="75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="x9X-9d-W1c">
