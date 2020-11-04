@@ -34,6 +34,9 @@ class WordEditorViewController : FormViewController {
     }
 
     @IBAction func doneTapped() {
+    }
+
+    private func saveNewEntry() {
         let values = form.values()
         let wordEntry = WordEntry()
         wordEntry.title = values[tagTitle] as? String ?? ""
