@@ -1,12 +1,13 @@
 import UIKit
 import RealmSwift
+import SCLAlertView
 
 class WordListViewController : UITableViewController {
     var words: Results<WordEntry>!
 
     override func viewDidLoad() {
         words = DataManager.shared.wordEntries
-
+        tableView.allowsSelectionDuringEditing = true
         navigationItem.rightBarButtonItems?.append(editButtonItem)
     }
 
