@@ -38,6 +38,21 @@ class WordListViewController : UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.isEditing {
+            performSegue(withIdentifier: "showWordEditor", sender: words[indexPath.row])
+        } else {
+            // TODO show entry info
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = (segue.destination as? UINavigationController)?.topViewController as? WordEditorViewController,
+            let entryToEdit = sender as? WordEntry {
+            vc.entryToEdit = entryToEdit
+        }
+    }
+
     @IBAction func addTapped() {
         performSegue(withIdentifier: "showWordEditor", sender: nil)
     }
