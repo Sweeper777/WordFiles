@@ -25,6 +25,19 @@ class WordListViewController : UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        do {
+            try DataManager.shared.deleteWordEntry(words[indexPath.row])
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        } catch {
+            SCLAlertView().showError("Error", subTitle: "An unknown error has occurred.", closeButtonTitle: "OK")
+        }
+    }
+
     @IBAction func addTapped() {
         performSegue(withIdentifier: "showWordEditor", sender: nil)
     }
