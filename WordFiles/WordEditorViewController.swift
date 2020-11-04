@@ -34,6 +34,11 @@ class WordEditorViewController : FormViewController {
     }
 
     @IBAction func doneTapped() {
+        if let entryToUpdate = entryToEdit {
+            updateEntry(entryToUpdate)
+        } else {
+            saveNewEntry()
+        }
     }
 
     private func saveNewEntry() {
