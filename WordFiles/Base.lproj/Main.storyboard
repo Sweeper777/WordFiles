@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wIX-eY-jrc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1LO-HK-QnM">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Words-->
         <scene sceneID="65W-ts-Wa3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wIX-eY-jrc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Words" id="TqW-nl-fEL">
+                        <imageReference key="image" image="abc" catalog="system" renderingMode="template"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LM5-Kg-JCh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -24,7 +28,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dyO-L4-qaL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="528.79999999999995" y="75.112443778110944"/>
+            <point key="canvasLocation" x="1468" y="75.112443778110944"/>
         </scene>
         <!--My Words-->
         <scene sceneID="Z5M-Pd-RfZ">
@@ -58,7 +62,7 @@
                             <outlet property="delegate" destination="PyE-zT-1aQ" id="84E-lT-A1p"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Words" id="F1L-8l-kfz">
+                    <navigationItem key="navigationItem" title="My Words" largeTitleDisplayMode="always" id="F1L-8l-kfz">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aGM-bE-bv3">
                             <connections>
                                 <action selector="addTapped" destination="PyE-zT-1aQ" id="cTs-S7-KXL"/>
@@ -73,7 +77,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0i-eg-g83" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="u7n-BX-edg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1340" y="75"/>
+            <point key="canvasLocation" x="2279.1999999999998" y="74.212893553223395"/>
         </scene>
         <!--Entry View Controller-->
         <scene sceneID="8ox-1t-Dg7">
@@ -89,7 +93,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zB-cZ-Zec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2180" y="75"/>
+            <point key="canvasLocation" x="3119.1999999999998" y="74.212893553223395"/>
+        </scene>
+        <!--My Sentences-->
+        <scene sceneID="D4B-Ir-dlV">
+            <objects>
+                <tableViewController id="wRr-4N-z6M" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ehV-am-PRh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ojc-I2-ml3">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ojc-I2-ml3" id="eET-kw-lIJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wRr-4N-z6M" id="9Wm-0X-fOm"/>
+                            <outlet property="delegate" destination="wRr-4N-z6M" id="cAm-dE-FrE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Sentences" id="a9n-5v-SW5"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cXl-jm-iuz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="1551"/>
+        </scene>
+        <!--Sentences-->
+        <scene sceneID="h9u-LM-qSq">
+            <objects>
+                <navigationController id="hmh-ik-AWr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Sentences" image="text.alignleft" catalog="system" id="8g8-Vb-dQH"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K95-ZL-OLZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wRr-4N-z6M" kind="relationship" relationship="rootViewController" id="MAP-Qg-hwD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ay-M6-nsy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1468" y="1551"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="x9X-9d-W1c">
@@ -105,7 +155,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dbi-Dc-irS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1340" y="806"/>
+            <point key="canvasLocation" x="2279" y="831"/>
         </scene>
         <!--New Word-->
         <scene sceneID="Y5x-aN-Yfu">
@@ -135,10 +185,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnl-1c-nw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2180" y="806"/>
+            <point key="canvasLocation" x="3119" y="831"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="nj8-Hh-TX8">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1LO-HK-QnM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ngw-NP-GyZ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="wIX-eY-jrc" kind="relationship" relationship="viewControllers" id="Iro-Nb-rFT"/>
+                        <segue destination="hmh-ik-AWr" kind="relationship" relationship="viewControllers" id="8KX-P8-ba7"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1db-Ly-b4x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="528.79999999999995" y="75.112443778110944"/>
         </scene>
     </scenes>
     <resources>
+        <image name="abc" catalog="system" width="128" height="50"/>
+        <image name="text.alignleft" catalog="system" width="128" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
