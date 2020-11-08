@@ -42,7 +42,7 @@ class WordListViewController : UITableViewController {
         if tableView.isEditing {
             performSegue(withIdentifier: "showWordEditor", sender: words[indexPath.row])
         } else {
-            // TODO show entry info
+            performSegue(withIdentifier: "showEntry", sender: words[indexPath.row])
         }
     }
 
@@ -50,6 +50,9 @@ class WordListViewController : UITableViewController {
         if let vc = (segue.destination as? UINavigationController)?.topViewController as? WordEditorViewController,
             let entryToEdit = sender as? WordEntry {
             vc.entryToEdit = entryToEdit
+        } else if let vc = segue.destination as? EntryViewController,
+                  let entry = sender as? WordEntry {
+            vc.entry = entry
         }
     }
 
