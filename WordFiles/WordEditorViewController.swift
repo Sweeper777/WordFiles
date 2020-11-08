@@ -52,8 +52,8 @@ class WordEditorViewController : FormViewController {
             performSegue(withIdentifier: "unwindToWordList", sender: nil)
         } catch DataError.duplicateWord {
             showError("An entry with the same title already exists!")
-        } catch DataError.noExplanation {
-            showError("Please enter an explanation!")
+        } catch DataError.noExplanationOrExample {
+            showError("Please enter an explanation or example!")
         } catch DataError.emptyWord {
             showError("Please enter a title for this entry!")
         } catch {
@@ -73,7 +73,7 @@ class WordEditorViewController : FormViewController {
             performSegue(withIdentifier: "unwindToWordList", sender: nil)
         } catch DataError.duplicateWord {
             showError("An entry with the same title already exists!")
-        } catch DataError.noExplanation {
+        } catch DataError.noExplanationOrExample {
             showError("Please enter an explanation!")
         } catch DataError.emptyWord {
             showError("Please enter a title for this entry!")
