@@ -34,12 +34,12 @@ class WordListViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        words.count
+        isFiltering ? filteredWords.count : words.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel?.text = words[indexPath.row].title
+        cell.textLabel?.text = (isFiltering ? filteredWords : words)[indexPath.row].title
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -50,7 +50,7 @@ class WordListViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         do {
-            try DataManager.shared.deleteWordEntry(words[indexPath.row])
+            try DataManager.shared.deleteWordEntry((isFiltering ? filteredWords : words)[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .automatic)
         } catch {
             SCLAlertView().showError("Error", subTitle: "An unknown error has occurred.", closeButtonTitle: "OK")
@@ -59,9 +59,9 @@ class WordListViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
-            performSegue(withIdentifier: "showWordEditor", sender: words[indexPath.row])
+            performSegue(withIdentifier: "showWordEditor", sender: (isFiltering ? filteredWords : words)[indexPath.row])
         } else {
-            performSegue(withIdentifier: "showEntry", sender: words[indexPath.row])
+            performSegue(withIdentifier: "showEntry", sender: (isFiltering ? filteredWords : words)[indexPath.row])
         }
     }
 
