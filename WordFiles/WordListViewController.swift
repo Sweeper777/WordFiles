@@ -5,6 +5,17 @@ import SCLAlertView
 class WordListViewController : UITableViewController {
     var words: Results<WordEntry>!
 
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredWords: Results<WordEntry>!
+
+    var isSearchBarEmpty: Bool {
+        searchController.searchBar.text?.isEmpty ?? true
+    }
+
+    var isFiltering: Bool {
+        searchController.isActive && !isSearchBarEmpty
+    }
+
     override func viewDidLoad() {
         words = DataManager.shared.wordEntries
         tableView.allowsSelectionDuringEditing = true
