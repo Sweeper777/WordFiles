@@ -10,7 +10,7 @@ class WordEditorViewController : FormViewController {
         if let entryTitle = entryToEdit?.title {
             title = "Editing '\(entryTitle)'"
         } else {
-            title = "New Entry"
+            title = "New Word"
         }
 
         form +++ TextRow(tagTitle) { row in
