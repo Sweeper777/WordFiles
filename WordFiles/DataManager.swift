@@ -8,7 +8,7 @@ class DataManager {
     private init() {
         do {
             realm = try Realm()
-            wordEntries = realm.objects(WordEntry.self)
+            wordEntries = realm.objects(WordEntry.self).sorted(byKeyPath: "title")
         } catch let error {
             print(error)
             fatalError()
