@@ -83,3 +83,13 @@ class WordListViewController : UITableViewController {
         tableView.reloadData()
     }
 }
+
+extension WordListViewController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text ?? ""
+        filteredWords = DataManager.shared.entriesFulfillingSearchTerm(searchText)
+        tableView.reloadData()
+    }
+
+
+}
