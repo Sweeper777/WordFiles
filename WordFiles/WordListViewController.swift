@@ -20,6 +20,13 @@ class WordListViewController : UITableViewController {
         words = DataManager.shared.wordEntries
         tableView.allowsSelectionDuringEditing = true
         navigationItem.rightBarButtonItems?.append(editButtonItem)
+
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search..."
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
