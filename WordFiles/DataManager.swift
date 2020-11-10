@@ -51,6 +51,10 @@ class DataManager {
             try validWordEntry(wordEntry: wordEntry)
         }
     }
+
+    func entriesFulfillingSearchTerm(_ searchTerm: String) -> Results<WordEntry> {
+        wordEntries.filter("title CONTAINS[c] %@", searchTerm)
+    }
 }
 
 enum DataError : Error {
