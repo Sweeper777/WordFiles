@@ -3,12 +3,14 @@ import SwiftyUtils
 
 class DataManager {
     let wordEntries: Results<WordEntry>
+    let sentenceEntries: Results<SentenceEntry>
     let realm: Realm!
 
     private init() {
         do {
             realm = try Realm()
             wordEntries = realm.objects(WordEntry.self).sorted(byKeyPath: "title")
+            sentenceEntries = realm.objects(SentenceEntry.self).sorted(byKeyPath: "title")
         } catch let error {
             print(error)
             fatalError()
