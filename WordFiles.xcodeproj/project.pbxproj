@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		08B0761C66C6857FE5058F8A /* Pods_WordFiles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4508E1129239FF2B8F8CBCF9 /* Pods_WordFiles.framework */; };
 		0E8FCD4F37AF25D9E43051E6 /* Pods_WordFiles_WordFilesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345E6D1CAD86C37F0644DFD0 /* Pods_WordFiles_WordFilesUITests.framework */; };
+		25EF0174E4525CF5E8737EC0 /* SentenceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF09C0F4AC9105E122A486 /* SentenceEntry.swift */; };
+		25EF01F7FEDDA1A487FD0F41 /* SentenceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF016CFB927093A5C26E4D /* SentenceListViewController.swift */; };
 		25EF03B6A003CA1FFCB2D9D4 /* WordEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0B4A837F94075BC04AB6 /* WordEntry.swift */; };
 		25EF061D72A2D77B458D31C5 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF02311F4305CF4CED7515 /* WordListViewController.swift */; };
 		25EF066F74E4D3A327F54BF5 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0D2C080341369FF3CFAE /* EntryViewController.swift */; };
@@ -43,8 +45,10 @@
 
 /* Begin PBXFileReference section */
 		1AD228B7B448362F5B94E331 /* Pods-WordFiles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordFiles.debug.xcconfig"; path = "Target Support Files/Pods-WordFiles/Pods-WordFiles.debug.xcconfig"; sourceTree = "<group>"; };
+		25EF016CFB927093A5C26E4D /* SentenceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceListViewController.swift; sourceTree = "<group>"; };
 		25EF02311F4305CF4CED7515 /* WordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		25EF0784A69C6DB33357691E /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		25EF09C0F4AC9105E122A486 /* SentenceEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceEntry.swift; sourceTree = "<group>"; };
 		25EF0B4A837F94075BC04AB6 /* WordEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordEntry.swift; sourceTree = "<group>"; };
 		25EF0B6CEB55BCEB4B74C047 /* WordEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordEditorViewController.swift; sourceTree = "<group>"; };
 		25EF0D2C080341369FF3CFAE /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				25EF0B6CEB55BCEB4B74C047 /* WordEditorViewController.swift */,
 				25EF0784A69C6DB33357691E /* DataManager.swift */,
 				25EF0D2C080341369FF3CFAE /* EntryViewController.swift */,
+				25EF09C0F4AC9105E122A486 /* SentenceEntry.swift */,
+				25EF016CFB927093A5C26E4D /* SentenceListViewController.swift */,
 			);
 			path = WordFiles;
 			sourceTree = "<group>";
@@ -426,6 +432,8 @@
 				25EF092EB0A5BE14305C2360 /* WordEditorViewController.swift in Sources */,
 				25EF0B077035B88D4212AA08 /* DataManager.swift in Sources */,
 				25EF066F74E4D3A327F54BF5 /* EntryViewController.swift in Sources */,
+				25EF0174E4525CF5E8737EC0 /* SentenceEntry.swift in Sources */,
+				25EF01F7FEDDA1A487FD0F41 /* SentenceListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
