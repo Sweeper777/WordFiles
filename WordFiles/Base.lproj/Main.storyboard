@@ -98,13 +98,13 @@
         <!--My Sentences-->
         <scene sceneID="D4B-Ir-dlV">
             <objects>
-                <tableViewController id="wRr-4N-z6M" sceneMemberID="viewController">
+                <tableViewController id="wRr-4N-z6M" customClass="SentenceListViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ehV-am-PRh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ojc-I2-ml3">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Ojc-I2-ml3" customClass="SentenceCell" customModule="WordFiles" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ojc-I2-ml3" id="eET-kw-lIJ">
@@ -118,7 +118,16 @@
                             <outlet property="delegate" destination="wRr-4N-z6M" id="cAm-dE-FrE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Sentences" id="a9n-5v-SW5"/>
+                    <navigationItem key="navigationItem" title="My Sentences" id="a9n-5v-SW5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gag-3a-PhH">
+                            <connections>
+                                <action selector="newSentenceTapped" destination="wRr-4N-z6M" id="tRl-h2-hXc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="ogc-am-MOh" kind="presentation" identifier="showSentenceEditor" modalPresentationStyle="formSheet" id="6Ji-jr-Y3W"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXl-jm-iuz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -193,6 +202,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1LO-HK-QnM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ngw-NP-GyZ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -204,6 +214,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1db-Ly-b4x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="528.79999999999995" y="75.112443778110944"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Dmx-by-fwF">
+            <objects>
+                <navigationController id="ogc-am-MOh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WWD-sm-n3U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JuH-LF-amc" kind="relationship" relationship="rootViewController" id="15W-B5-eg2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgU-Ea-a41" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="2253"/>
+        </scene>
+        <!--New Sentence-->
+        <scene sceneID="NGw-oS-J5t">
+            <objects>
+                <viewController id="JuH-LF-amc" customClass="SentenceEditorViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qRH-a6-YTd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1D8-GQ-qdj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Sentence" id="TXN-Ww-Aoz">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ufO-Zo-IoS">
+                            <connections>
+                                <action selector="cancelTapped" destination="JuH-LF-amc" id="S8w-22-qB6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="G4w-Oe-vzN">
+                            <connections>
+                                <action selector="doneTapped" destination="JuH-LF-amc" id="X6W-5g-x6a"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="onv-ia-onU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3119" y="2253"/>
         </scene>
     </scenes>
     <resources>
