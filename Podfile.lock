@@ -7,6 +7,7 @@ PODS:
     - Realm (= 10.1.0)
   - SCLAlertView (0.8.1)
   - SwiftyUtils (5.2.0)
+  - TagsPanelView (0.0.1)
 
 DEPENDENCIES:
   - Eureka
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - RealmSwift
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
   - SwiftyUtils
+  - TagsPanelView
 
 SPEC REPOS:
   trunk:
@@ -21,6 +23,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SwiftyUtils
+    - TagsPanelView
 
 EXTERNAL SOURCES:
   SCLAlertView:
@@ -37,7 +40,8 @@ SPEC CHECKSUMS:
   RealmSwift: 725d1c10df64964b04aaa0058c19ce0f4b4c3f5a
   SCLAlertView: 776813fb1f62248965f37cb7edf4088ee6394460
   SwiftyUtils: 4c99e810e769063dbd5d4e83b486961a5d470aeb
+  TagsPanelView: 90bd57253f611437f90f0b3f7df94623cf6593aa
 
-PODFILE CHECKSUM: 649b5fd65d9b4efa56dad973ab474005337293b0
+PODFILE CHECKSUM: 83b80f04aa3b6faeb0f2f5ba3169ec657623e56b
 
 COCOAPODS: 1.10.0.rc.1
