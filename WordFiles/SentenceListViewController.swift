@@ -27,6 +27,7 @@ class SentenceListViewController : UITableViewController {
 
     override func viewDidLoad() {
 //        sentences = DataManager.shared.sentenceEntries
+        tableView.register(UINib(nibName: "SentenceCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
