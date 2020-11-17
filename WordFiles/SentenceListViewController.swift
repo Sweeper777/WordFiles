@@ -60,4 +60,8 @@ class SentenceListViewController : UITableViewController {
         let tagsHeight = TagsPanelView.generatePanelHeightThatFit(maxSize, tags: entry.tags.map(\.name), fontSize: 17)
         return sentenceHeight + tagsHeight + 32
     }
+
+    @IBAction func newSentenceTapped() {
+        performSegue(withIdentifier: "showSentenceEditor", sender: nil)
+    }
 }
