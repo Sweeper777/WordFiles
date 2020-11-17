@@ -39,8 +39,11 @@ class SentenceListViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel?.text = sentences[indexPath.row].sentence
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! SentenceCell
+        cell.sentenceLabel.text = sentences[indexPath.row].sentence
+        cell.tagsView.tagArray = sentences[indexPath.row].tags.map(\.name)
+        cell.tagsView.tagTextColor = .black
+        cell.tagsView.tagsBackgroundColorsArray = Array(repeating: UIColor(named: "tagBackground")!, count: cell.tagsView.tagArray.count)
         return cell
     }
 }
