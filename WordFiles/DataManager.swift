@@ -64,3 +64,9 @@ enum WordError: Error {
     case emptyWord
     case noExplanationOrExample
 }
+
+enum SentenceError: Error {
+    case duplicateSentence
+    case emptySentence
+    case duplicateTags
+}
