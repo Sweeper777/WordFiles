@@ -46,4 +46,18 @@ class SentenceListViewController : UITableViewController {
         cell.tagsView.tagsBackgroundColorsArray = Array(repeating: UIColor(named: "tagBackground")!, count: cell.tagsView.tagArray.count)
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let entry = sentences[indexPath.row]
+        let maxSize = CGSize(width: tableView.width - 16, height: .greatestFiniteMagnitude)
+        let sentence = entry.sentence
+        let sentenceHeight = (sentence as NSString)
+                                .boundingRect(with: maxSize,
+                                              options: [.usesLineFragmentOrigin],
+                                              attributes: [.font: UIFont.systemFont(ofSize: 17)],
+                                              context: nil)
+                                .height
+        let tagsHeight = TagsPanelView.generatePanelHeightThatFit(maxSize, tags: entry.tags.map(\.name), fontSize: 17)
+        return sentenceHeight + tagsHeight + 32
+    }
 }
