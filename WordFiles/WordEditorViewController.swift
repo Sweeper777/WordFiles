@@ -50,11 +50,11 @@ class WordEditorViewController : FormViewController {
         do {
             try DataManager.shared.addWordEntry(wordEntry)
             performSegue(withIdentifier: "unwindToWordList", sender: nil)
-        } catch DataError.duplicateWord {
+        } catch WordError.duplicateWord {
             showError("An entry with the same title already exists!")
-        } catch DataError.noExplanationOrExample {
+        } catch WordError.noExplanationOrExample {
             showError("Please enter an explanation or example!")
-        } catch DataError.emptyWord {
+        } catch WordError.emptyWord {
             showError("Please enter a title for this entry!")
         } catch {
             showError("An unknown error has occurred!")
@@ -71,11 +71,11 @@ class WordEditorViewController : FormViewController {
                 entry.example = values[tagExample] as? String ?? ""
             }
             performSegue(withIdentifier: "unwindToWordList", sender: nil)
-        } catch DataError.duplicateWord {
+        } catch WordError.duplicateWord {
             showError("An entry with the same title already exists!")
-        } catch DataError.noExplanationOrExample {
+        } catch WordError.noExplanationOrExample {
             showError("Please enter an explanation!")
-        } catch DataError.emptyWord {
+        } catch WordError.emptyWord {
             showError("Please enter a title for this entry!")
         } catch {
             showError("An unknown error has occurred!")

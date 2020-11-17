@@ -33,11 +33,11 @@ class DataManager {
 
     private func validWordEntry(wordEntry: WordEntry) throws {
         if wordEntry.title.trimmed().isEmpty {
-            throw DataError.emptyWord
+            throw WordError.emptyWord
         } else if wordEntry.explanation.trimmed().isEmpty && wordEntry.example.trimmed().isEmpty{
-            throw DataError.noExplanationOrExample
+            throw WordError.noExplanationOrExample
         } else if wordEntries.filter("title == %@", wordEntry.title).count > 0 {
-            throw DataError.duplicateWord
+            throw WordError.duplicateWord
         }
     }
 
@@ -59,7 +59,7 @@ class DataManager {
     }
 }
 
-enum DataError : Error {
+enum WordError: Error {
     case duplicateWord
     case emptyWord
     case noExplanationOrExample
