@@ -33,6 +33,20 @@ class DataManager {
         }
     }
 
+
+    func validateSentenceEntry(_ sentenceEntry: SentenceEntry) throws {
+        if sentenceEntry.sentence.trimmed().isEmpty {
+            throw SentenceError.emptySentence
+        } else if sentenceEntries.filter("sentence == %@", sentenceEntry.sentence).count > 0 {
+            throw SentenceError.duplicateSentence
+        } else {
+            let tags = sentenceEntry.tags.map(\.name)
+            if Set(tags).count != tags.count {
+                throw SentenceError.duplicateTags
+            }
+        }
+    }
+
     private func validateWordEntry(_ wordEntry: WordEntry) throws {
         if wordEntry.title.trimmed().isEmpty {
             throw WordError.emptyWord
