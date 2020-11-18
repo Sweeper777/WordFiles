@@ -8,6 +8,11 @@ class SentenceEditorViewController : FormViewController {
 
         tableView.setEditing(true, animated: false)
 
+        form +++ Section("sentence")
+        <<< TextAreaRow(tagSentence) { row in
+            row.value = ""
+        }
+
     }
 }
 
