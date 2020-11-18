@@ -25,13 +25,13 @@ class DataManager {
     }
 
     func addWordEntry(_ wordEntry: WordEntry) throws {
-        try validWordEntry(wordEntry: wordEntry)
+        try validateWordEntry(wordEntry)
         try realm.write {
             realm.add(wordEntry)
         }
     }
 
-    private func validWordEntry(wordEntry: WordEntry) throws {
+    private func validateWordEntry(_ wordEntry: WordEntry) throws {
         if wordEntry.title.trimmed().isEmpty {
             throw WordError.emptyWord
         } else if wordEntry.explanation.trimmed().isEmpty && wordEntry.example.trimmed().isEmpty{
@@ -50,7 +50,7 @@ class DataManager {
     func updateWordEntry(_ wordEntry: WordEntry, block: (WordEntry) -> Void) throws {
         try realm.write {
             block(wordEntry)
-            try validWordEntry(wordEntry: wordEntry)
+            try validateWordEntry(wordEntry)
         }
     }
 
