@@ -33,6 +33,23 @@ class DataManager {
         }
     }
 
+    func addSentenceEntry(_ sentenceEntry: SentenceEntry) throws {
+        try validateSentenceEntry(sentenceEntry)
+        let newSentenceEntry = SentenceEntry()
+        newSentenceEntry.sentence = sentenceEntry.sentence
+        for tag in sentenceEntry.tags {
+            if let existingTag = realm.object(ofType: Tag.self, forPrimaryKey: tag.name) {
+                newSentenceEntry.tags.append(existingTag)
+            } else {
+                let newTag = Tag()
+                newTag.name = tag.name
+                newSentenceEntry.tags.append(newTag)
+            }
+        }
+        try realm.write {
+            realm.add(newSentenceEntry)
+        }
+    }
 
     func validateSentenceEntry(_ sentenceEntry: SentenceEntry) throws {
         if sentenceEntry.sentence.trimmed().isEmpty {
