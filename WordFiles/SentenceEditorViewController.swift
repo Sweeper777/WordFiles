@@ -35,6 +35,27 @@ class SentenceEditorViewController : FormViewController {
     }
 
     @IBAction func doneTapped() {
+        let values = form.values()
+        let sentence = values[tagSentence] as? String ?? ""
+        let tags = (values[tagTags] as? [Any] ?? []).compactMap { $0 as? String }
+        let sentenceEntry = SentenceEntry()
+        sentenceEntry.sentence = sentence
+        for tag in tags {
+            let tagObject = Tag()
+            tagObject.name = tag
+            sentenceEntry.tags.append(tagObject)
+        }
+        do {
+            try DataManager.shared.addSentenceEntry(sentenceEntry)
+        } catch SentenceError.emptySentence {
+            showError("Please enter a sentence!")
+        } catch SentenceError.duplicateSentence {
+            showError("You have already added this sentence!")
+        } catch SentenceError.duplicateTags {
+            showError("You cannot add the same tag multiple times!")
+        } catch {
+            showError("An unknown error occurred!")
+        }
     }
 
     @IBAction func cancelTapped() {
