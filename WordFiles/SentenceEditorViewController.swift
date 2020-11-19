@@ -19,6 +19,14 @@ class SentenceEditorViewController : FormViewController {
                     $0.title = "New Tag"
                 }
             }
+            $0.multivaluedRowToInsertAt = { index in
+                TextRow {
+                    $0.placeholder = "Tag Name"
+                }.cellSetup { (cell, row) in
+                    cell.textField.autocapitalizationType = .none
+                }
+            }
+            $0.tag = tagTags
         }
     }
 }
