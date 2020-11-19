@@ -29,6 +29,17 @@ class SentenceEditorViewController : FormViewController {
             $0.tag = tagTags
         }
     }
+
+    func showError(_ msg: String) {
+        SCLAlertView().showError("Error", subTitle: msg, closeButtonTitle: "OK")
+    }
+
+    @IBAction func doneTapped() {
+    }
+
+    @IBAction func cancelTapped() {
+        dismiss(animated: true)
+    }
 }
 
 let tagSentence = "sentence"
