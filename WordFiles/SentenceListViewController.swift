@@ -20,6 +20,7 @@ class SentenceListViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! SentenceCell
+        cell.prepareForReuse()
         cell.sentenceLabel.text = sentences[indexPath.row].sentence
         cell.tagsView.tagArray = sentences[indexPath.row].tags.map(\.name)
         cell.tagsView.tagTextColor = .black
