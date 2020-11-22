@@ -81,6 +81,18 @@ class DataManager {
         }
     }
 
+    func deleteSentenceEntry(_ sentenceEntry: SentenceEntry) throws {
+        try realm.write {
+            let tags = Array(sentenceEntry.tags)
+            realm.delete(sentenceEntry)
+            for tag in tags {
+                if tag.sentences.count == 0 {
+                    realm.delete(tag)
+                }
+            }
+        }
+    }
+
     func updateWordEntry(_ wordEntry: WordEntry, block: (WordEntry) -> Void) throws {
         try realm.write {
             block(wordEntry)
