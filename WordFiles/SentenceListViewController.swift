@@ -8,6 +8,7 @@ class SentenceListViewController : UITableViewController {
     override func viewDidLoad() {
         sentences = DataManager.shared.sentenceEntries
         tableView.register(UINib(nibName: "SentenceCell", bundle: nil), forCellReuseIdentifier: "cell")
+        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
