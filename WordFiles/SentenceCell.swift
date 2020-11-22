@@ -3,5 +3,7 @@ import TagsPanelView
 
 class SentenceCell : UITableViewCell {
     @IBOutlet var sentenceLabel: UILabel!
-    @IBOutlet var tagsView: TagsPanelView!
+    @IBOutlet var stackView: UIStackView!
+    var tagsView: TagsPanelView!
+
 }
