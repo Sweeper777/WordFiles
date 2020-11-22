@@ -9,6 +9,7 @@ class SentenceListViewController : UITableViewController {
         sentences = DataManager.shared.sentenceEntries
         tableView.register(UINib(nibName: "SentenceCell", bundle: nil), forCellReuseIdentifier: "cell")
         navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
+        tableView.allowsSelectionDuringEditing = true
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,6 +42,14 @@ class SentenceListViewController : UITableViewController {
                                 .height
         let tagsHeight = TagsPanelView.generatePanelHeightThatFit(maxSize, tags: entry.tags.map(\.name), fontSize: 17)
         return sentenceHeight + tagsHeight + 32
+    }
+
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .delete
     }
 
     @IBAction func newSentenceTapped() {
