@@ -44,4 +44,8 @@ class SentenceListViewController : UITableViewController {
     @IBAction func newSentenceTapped() {
         performSegue(withIdentifier: "showSentenceEditor", sender: nil)
     }
+
+    @IBAction func unwindFromSentenceEditor(_ segue: UIStoryboardSegue) {
+        tableView.reloadData()
+    }
 }
