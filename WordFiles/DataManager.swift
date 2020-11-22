@@ -109,6 +109,25 @@ class DataManager {
             }
         }
 
+        let oldTags = Array(sentenceEntry.tags)
+        try realm.write {
+            sentenceEntry.sentence = newSentenceEntry.sentence
+            sentenceEntry.tags.removeAll()
+            for tag in newSentenceEntry.tags {
+                if let existingTag = realm.object(ofType: Tag.self, forPrimaryKey: tag.name) {
+                    sentenceEntry.tags.append(existingTag)
+                } else {
+                    let newTag = Tag()
+                    newTag.name = tag.name
+                    sentenceEntry.tags.append(newTag)
+                }
+            }
+            for oldTag in oldTags {
+                if oldTag.sentences.count == 0 {
+                    realm.delete(oldTag)
+                }
+            }
+        }
     }
 
     func entriesFulfillingSearchTerm(_ searchTerm: String) -> Results<WordEntry> {
