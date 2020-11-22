@@ -100,6 +100,17 @@ class DataManager {
         }
     }
 
+    func updateSentenceEntry(_ sentenceEntry: SentenceEntry, to newSentenceEntry: SentenceEntry) throws {
+        do {
+            try validateSentenceEntry(newSentenceEntry)
+        } catch SentenceError.duplicateSentence {
+            if newSentenceEntry.sentence != sentenceEntry.sentence {
+                throw SentenceError.duplicateSentence
+            }
+        }
+
+    }
+
     func entriesFulfillingSearchTerm(_ searchTerm: String) -> Results<WordEntry> {
         wordEntries.filter("title CONTAINS[c] %@", searchTerm)
     }
