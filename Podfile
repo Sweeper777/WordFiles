@@ -12,6 +12,7 @@ target 'WordFiles' do
   pod 'RealmSwift'
   pod 'Eureka'
   pod 'TagsPanelView'
+  pod 'SuggestionRow'
 
   target 'WordFilesTests' do
     inherit! :search_paths

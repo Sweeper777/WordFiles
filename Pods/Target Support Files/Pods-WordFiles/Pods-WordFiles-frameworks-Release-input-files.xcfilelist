@@ -3,5 +3,6 @@ ${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
 ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
 ${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework
+${BUILT_PRODUCTS_DIR}/SuggestionRow/SuggestionRow.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyUtils/SwiftyUtils.framework
 ${BUILT_PRODUCTS_DIR}/TagsPanelView/TagsPanelView.framework
