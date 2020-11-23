@@ -23,8 +23,12 @@ class SentenceEditorViewController : FormViewController {
                 }
             }
             $0.multivaluedRowToInsertAt = { index in
-                TextRow {
+                SuggestionAccessoryRow<String> {
                     $0.placeholder = "Tag Name"
+                    $0.filterFunction = {
+                        input in
+                        DataManager.shared.tags.filter("name CONTAINS[c] %@", input).map(\.name)
+                    }
                 }.cellSetup { (cell, row) in
                     cell.textField.autocapitalizationType = .none
                 }
