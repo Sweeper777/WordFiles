@@ -1,8 +1,11 @@
 import UIKit
 import Eureka
 import SCLAlertView
+import SuggestionRow
 
 class SentenceEditorViewController : FormViewController {
+    var sentenceToEdit: SentenceEntry?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
