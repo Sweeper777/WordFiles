@@ -52,6 +52,15 @@ class SentenceListViewController : UITableViewController {
         .delete
     }
 
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        do {
+            try DataManager.shared.deleteSentenceEntry(sentences[indexPath.row])
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        } catch {
+            SCLAlertView().showError("Error", subTitle: "An unknown error occurred.", closeButtonTitle: "OK")
+        }
+    }
+
     @IBAction func newSentenceTapped() {
         performSegue(withIdentifier: "showSentenceEditor", sender: nil)
     }
