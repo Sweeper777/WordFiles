@@ -66,7 +66,12 @@ class SentenceEditorViewController : FormViewController {
             sentenceEntry.tags.append(tagObject)
         }
         do {
-            try DataManager.shared.addSentenceEntry(sentenceEntry)
+            if let sentenceToEdit = self.sentenceToEdit {
+                try DataManager.shared.updateSentenceEntry(sentenceToEdit, to: sentenceEntry)
+            } else {
+                try DataManager.shared.addSentenceEntry(sentenceEntry)
+            }
+            performSegue(withIdentifier: "unwindToSentenceList", sender: nil)
         } catch SentenceError.emptySentence {
             showError("Please enter a sentence!")
         } catch SentenceError.duplicateSentence {
