@@ -34,6 +34,19 @@ class SentenceEditorViewController : FormViewController {
                 }
             }
             $0.tag = tagTags
+
+            for tag in (sentenceToEdit?.tags).map(Array.init) ?? [] {
+                SuggestionAccessoryRow<String> {
+                    $0.placeholder = "Tag Name"
+                    $0.filterFunction = {
+                        input in
+                        DataManager.shared.tags.filter("name CONTAINS[c] %@", input).map(\.name)
+                    }
+                    $0.value = tag.name
+                }.cellSetup { (cell, row) in
+                    cell.textField.autocapitalizationType = .none
+                }
+            }
         }
     }
 
