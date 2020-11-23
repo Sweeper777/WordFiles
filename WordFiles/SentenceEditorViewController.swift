@@ -13,7 +13,7 @@ class SentenceEditorViewController : FormViewController {
 
         form +++ Section("sentence")
         <<< TextAreaRow(tagSentence) { row in
-            row.value = ""
+            row.value = sentenceToEdit?.sentence ?? ""
         }
 
         form +++ MultivaluedSection(multivaluedOptions: [.Delete, .Insert, .Reorder], header: "tags") {
