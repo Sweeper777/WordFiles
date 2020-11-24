@@ -61,6 +61,13 @@ class SentenceListViewController : UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isEditing {
+            performSegue(withIdentifier: "showSentenceEditor", sender: sentences[indexPath.row])
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
     @IBAction func newSentenceTapped() {
         performSegue(withIdentifier: "showSentenceEditor", sender: nil)
     }
