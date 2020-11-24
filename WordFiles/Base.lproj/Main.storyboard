@@ -100,7 +100,7 @@
             <objects>
                 <tableViewController id="wRr-4N-z6M" customClass="SentenceListViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ehV-am-PRh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -119,6 +119,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Sentences" id="a9n-5v-SW5">
+                        <barButtonItem key="leftBarButtonItem" title="Tags..." id="pPm-LL-E1V">
+                            <connections>
+                                <action selector="tagsTapped" destination="wRr-4N-z6M" id="61x-dg-821"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gag-3a-PhH">
                             <connections>
                                 <action selector="newSentenceTapped" destination="wRr-4N-z6M" id="tRl-h2-hXc"/>
@@ -127,6 +132,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="ogc-am-MOh" kind="presentation" identifier="showSentenceEditor" modalPresentationStyle="formSheet" id="6Ji-jr-Y3W"/>
+                        <segue destination="w1V-yR-7iy" kind="presentation" identifier="showTags" modalPresentationStyle="formSheet" id="6pB-XF-DNS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXl-jm-iuz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -230,7 +236,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgU-Ea-a41" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2279" y="2253"/>
+            <point key="canvasLocation" x="3118" y="1550"/>
         </scene>
         <!--New Sentence-->
         <scene sceneID="NGw-oS-J5t">
@@ -260,9 +266,75 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="onv-ia-onU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3119" y="2253"/>
+            <point key="canvasLocation" x="3958" y="1550"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yg6-ls-05F">
+            <objects>
+                <navigationController id="w1V-yR-7iy" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C6Z-Ch-5tU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1RT-1l-dbV" kind="relationship" relationship="rootViewController" id="rRp-IY-cpF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gCK-Xa-b2A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="662" y="2345"/>
+        </scene>
+        <!--Tags-->
+        <scene sceneID="aET-I2-eON">
+            <objects>
+                <tableViewController id="1RT-1l-dbV" customClass="TagListViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7DE-2R-H7U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="cOa-0h-hQj" style="IBUITableViewCellStyleDefault" id="om2-hg-sg2">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="om2-hg-sg2" id="Hri-pB-5T2">
+                                    <rect key="frame" x="0.0" y="0.0" width="348" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cOa-0h-hQj">
+                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1RT-1l-dbV" id="h18-9d-1cc"/>
+                            <outlet property="delegate" destination="1RT-1l-dbV" id="aba-4R-aYu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tags" id="GBI-tc-0SL">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="gBD-Wr-Isr">
+                            <connections>
+                                <action selector="doneTapped" destination="1RT-1l-dbV" id="Xke-1c-8Ii"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="wRr-4N-z6M" kind="show" identifier="showSentencesWithTag" id="6Hg-6g-rrF"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m6Q-mY-f19" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1468" y="2345"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6Hg-6g-rrF"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="abc" catalog="system" width="128" height="50"/>
         <image name="text.alignleft" catalog="system" width="128" height="100"/>
