@@ -68,6 +68,12 @@ class SentenceListViewController : UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = (segue.destination as? UINavigationController)?.topViewController as? SentenceEditorViewController {
+            vc.sentenceToEdit = sender as? SentenceEntry
+        }
+    }
+
     @IBAction func newSentenceTapped() {
         performSegue(withIdentifier: "showSentenceEditor", sender: nil)
     }
