@@ -10,8 +10,14 @@ class SentenceListViewController : UITableViewController {
     override func viewDidLoad() {
         sentences = tagFilter.flatMap(DataManager.shared.sentencesWith(tag:)) ?? DataManager.shared.sentenceEntries
         tableView.register(UINib(nibName: "SentenceCell", bundle: nil), forCellReuseIdentifier: "cell")
-        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
-        tableView.allowsSelectionDuringEditing = true
+        if tagFilter == nil {
+            navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
+            tableView.allowsSelectionDuringEditing = true
+        } else {
+            navigationItem.leftBarButtonItems = []
+            navigationItem.rightBarButtonItems = []
+            tableView.allowsSelection = false
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
