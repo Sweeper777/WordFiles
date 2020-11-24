@@ -1,12 +1,14 @@
 import UIKit
 import RealmSwift
 import TagsPanelView
+import SCLAlertView
 
 class SentenceListViewController : UITableViewController {
     var sentences: Results<SentenceEntry>!
+    var tagFilter: String?
 
     override func viewDidLoad() {
-        sentences = DataManager.shared.sentenceEntries
+        sentences = tagFilter.flatMap(DataManager.shared.sentencesWith(tag:)) ?? DataManager.shared.sentenceEntries
         tableView.register(UINib(nibName: "SentenceCell", bundle: nil), forCellReuseIdentifier: "cell")
         navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
         tableView.allowsSelectionDuringEditing = true
