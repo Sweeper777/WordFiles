@@ -14,4 +14,16 @@ class SentenceCell : UITableViewCell {
         tagsView.contentMode = .left
         stackView.addArrangedSubview(tagsView)
     }
+
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        true
+    }
+
+    override func copy(_ sender: Any?) {
+        print(sender ?? "nil")
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        true
+    }
 }
