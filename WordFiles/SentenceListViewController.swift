@@ -108,4 +108,8 @@ class SentenceListViewController : UITableViewController {
     @IBAction func unwindFromSentenceEditor(_ segue: UIStoryboardSegue) {
         tableView.reloadData()
     }
+
+    @IBAction func tagsTapped() {
+        performSegue(withIdentifier: "showTags", sender: nil)
+    }
 }
