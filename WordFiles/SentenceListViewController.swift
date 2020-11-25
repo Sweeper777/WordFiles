@@ -82,6 +82,15 @@ class SentenceListViewController : UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+
+    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        print(action)
+        return true
+    }
+
     @IBAction func newSentenceTapped() {
         performSegue(withIdentifier: "showSentenceEditor", sender: nil)
     }
