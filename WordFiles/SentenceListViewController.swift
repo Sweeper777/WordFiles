@@ -91,6 +91,16 @@ class SentenceListViewController : UITableViewController {
         return true
     }
 
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { elements in
+            UIMenu(children: [
+                UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc.fill")) { action in
+                    UIPasteboard.general.string = self.sentences[indexPath.row].sentence
+                }
+            ])
+        }
+    }
+
     @IBAction func newSentenceTapped() {
         performSegue(withIdentifier: "showSentenceEditor", sender: nil)
     }
