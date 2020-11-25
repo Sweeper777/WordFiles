@@ -35,4 +35,7 @@ class TagListViewController : UITableViewController {
         }
     }
 
+    @IBAction func doneTapped() {
+        dismiss(animated: true)
+    }
 }
