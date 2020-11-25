@@ -23,4 +23,16 @@ class TagListViewController : UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showSentencesWithTag", sender: tags[indexPath.row].name)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SentenceListViewController,
+            let tag = sender as? String {
+            vc.tagFilter = tag
+        }
+    }
+
 }
