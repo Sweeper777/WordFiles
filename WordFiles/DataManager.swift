@@ -52,7 +52,7 @@ class DataManager {
         }
     }
 
-    func validateSentenceEntry(_ sentenceEntry: SentenceEntry) throws {
+    private func validateSentenceEntry(_ sentenceEntry: SentenceEntry) throws {
         if sentenceEntry.sentence.trimmed().isEmpty {
             throw SentenceError.emptySentence
         } else if sentenceEntries.filter("sentence == %@", sentenceEntry.sentence).count > 0 {
@@ -132,6 +132,10 @@ class DataManager {
 
     func entriesFulfillingSearchTerm(_ searchTerm: String) -> Results<WordEntry> {
         wordEntries.filter("title CONTAINS[c] %@", searchTerm)
+    }
+
+    func sentencesWith(tag: String) -> Results<SentenceEntry>? {
+        realm.object(ofType: Tag.self, forPrimaryKey: tag)?.sentences.filter(NSPredicate(value: true))
     }
 }
 
