@@ -6,6 +6,17 @@ import SCLAlertView
 class SentenceListViewController : UITableViewController {
     var sentences: Results<SentenceEntry>!
     var tagFilter: String?
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredSentences: Results<SentenceEntry>!
+
+    var isSearchBarEmpty: Bool {
+        searchController.searchBar.text?.isEmpty ?? true
+    }
+
+    var isFiltering: Bool {
+        searchController.isActive && !isSearchBarEmpty
+    }
 
     override func viewDidLoad() {
         sentences = tagFilter.flatMap(DataManager.shared.sentencesWith(tag:)) ?? DataManager.shared.sentenceEntries
