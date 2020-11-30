@@ -29,6 +29,13 @@ class SentenceListViewController : UITableViewController {
             navigationItem.rightBarButtonItems = []
             tableView.allowsSelection = false
         }
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search..."
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
