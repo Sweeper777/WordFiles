@@ -19,7 +19,7 @@ class SentenceListViewController : UITableViewController {
     }
 
     override func viewDidLoad() {
-        sentences = tagFilter.flatMap(DataManager.shared.sentencesWith(tag:)) ?? DataManager.shared.sentenceEntries
+        sentences = tagFilter.flatMap { DataManager.shared.sentences(withTag: $0) } ?? DataManager.shared.sentenceEntries
         tableView.register(UINib(nibName: "SentenceCell", bundle: nil), forCellReuseIdentifier: "cell")
         if tagFilter == nil {
             navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
