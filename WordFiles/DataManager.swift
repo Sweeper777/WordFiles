@@ -134,8 +134,17 @@ class DataManager {
         wordEntries.filter("title CONTAINS[c] %@", searchTerm)
     }
 
-    func sentencesWith(tag: String) -> Results<SentenceEntry>? {
-        realm.object(ofType: Tag.self, forPrimaryKey: tag)?.sentences.filter(NSPredicate(value: true))
+    func sentences(withTag tag: String? = nil, matchingSearchTerm searchTerm: String? = nil) -> Results<SentenceEntry>? {
+        switch (tag, searchTerm) {
+        case (let tag?, let searchTerm?):
+            return realm.object(ofType: Tag.self, forPrimaryKey: tag)?.sentences.filter("sentence CONTAINS[c] %@", searchTerm)
+        case (let tag?, nil):
+            return realm.object(ofType: Tag.self, forPrimaryKey: tag)?.sentences.filter(NSPredicate(value: true))
+        case (nil, let searchTerm?):
+            return sentenceEntries.filter("sentence CONTAINS[c] %@", searchTerm)
+        case (nil, nil):
+            return sentenceEntries
+        }
     }
 }
 
