@@ -130,7 +130,7 @@ class DataManager {
         }
     }
 
-    func entriesFulfillingSearchTerm(_ searchTerm: String) -> Results<WordEntry> {
+    func wordsMatchingSearchTerm(_ searchTerm: String) -> Results<WordEntry> {
         wordEntries.filter("title CONTAINS[c] %@", searchTerm)
     }
 
