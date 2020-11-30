@@ -28,6 +28,7 @@ class SentenceListViewController : UITableViewController {
             navigationItem.leftBarButtonItems = []
             navigationItem.rightBarButtonItems = []
             tableView.allowsSelection = false
+            title = "Sentences tagged '\(tagFilter!)'"
         }
         
         searchController.searchResultsUpdater = self
