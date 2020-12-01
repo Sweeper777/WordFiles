@@ -44,21 +44,22 @@ class SentenceListViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sentences.count
+        (isFiltering ? filteredSentences : sentences).count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! SentenceCell
+        let sentenceEntry = (isFiltering ? filteredSentences : sentences)[indexPath.row]
         cell.prepareForReuse()
-        cell.sentenceLabel.text = sentences[indexPath.row].sentence
-        cell.tagsView.tagArray = sentences[indexPath.row].tags.map(\.name)
+        cell.sentenceLabel.text = sentenceEntry.sentence
+        cell.tagsView.tagArray = sentenceEntry.tags.map(\.name)
         cell.tagsView.tagTextColor = .black
         cell.tagsView.tagsBackgroundColorsArray = Array(repeating: UIColor(named: "tagBackground")!, count: cell.tagsView.tagArray.count)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let entry = sentences[indexPath.row]
+        let entry = (isFiltering ? filteredSentences : sentences)[indexPath.row]
         let maxSize = CGSize(width: tableView.width - 16, height: .greatestFiniteMagnitude)
         let sentence = entry.sentence
         let sentenceHeight = (sentence as NSString)
@@ -81,7 +82,7 @@ class SentenceListViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         do {
-            try DataManager.shared.deleteSentenceEntry(sentences[indexPath.row])
+            try DataManager.shared.deleteSentenceEntry((isFiltering ? filteredSentences : sentences)[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .automatic)
         } catch {
             SCLAlertView().showError("Error", subTitle: "An unknown error occurred.", closeButtonTitle: "OK")
@@ -90,7 +91,7 @@ class SentenceListViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isEditing {
-            performSegue(withIdentifier: "showSentenceEditor", sender: sentences[indexPath.row])
+            performSegue(withIdentifier: "showSentenceEditor", sender: (isFiltering ? filteredSentences : sentences)[indexPath.row])
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -114,7 +115,7 @@ class SentenceListViewController : UITableViewController {
         UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { elements in
             UIMenu(children: [
                 UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc.fill")) { action in
-                    UIPasteboard.general.string = self.sentences[indexPath.row].sentence
+                    UIPasteboard.general.string = (self.isFiltering ? self.filteredSentences : self.sentences)[indexPath.row].sentence
                 }
             ])
         }
