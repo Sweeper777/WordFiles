@@ -132,3 +132,11 @@ class SentenceListViewController : UITableViewController {
         performSegue(withIdentifier: "showTags", sender: nil)
     }
 }
+
+extension SentenceListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text ?? ""
+        filteredSentences = DataManager.shared.sentences(withTag: tagFilter, matchingSearchTerm: searchText)
+        tableView.reloadData()
+    }
+}
