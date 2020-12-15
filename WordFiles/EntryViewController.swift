@@ -13,12 +13,11 @@ class EntryViewController: FormViewController {
 
         if entry.explanation.trimmed().isNotEmpty {
             form +++ Section("explanation")
-                    <<< TextAreaRow {
+                    <<< LabelRow {
                 row in
-                row.value = entry.explanation
+                row.title = entry.explanation
             }.cellUpdate { (cell, row) in
-                cell.textView.isEditable = false
-                cell.textView.spellCheckingType = .no
+                cell.textLabel?.numberOfLines = 0
             }
         }
 
@@ -36,15 +35,14 @@ class EntryViewController: FormViewController {
                     exampleShown.value?.toggle()
                 }
             }
-            <<< TextAreaRow {
+            <<< LabelRow {
                 row in
-                row.value = entry.example
+                row.title = entry.example
                 row.hidden = .function([tagExampleShown], { form in
                     !((form.rowBy(tag: tagExampleShown) as? RowOf<Bool>)?.value ?? false)
                 })
             }.cellUpdate { (cell, row) in
-                cell.textView.isEditable = false
-                cell.textView.spellCheckingType = .no
+                cell.textLabel?.numberOfLines = 0
             }
         }
     }
