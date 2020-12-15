@@ -93,10 +93,18 @@ class DataManager {
         }
     }
 
-    func updateWordEntry(_ wordEntry: WordEntry, block: (WordEntry) -> Void) throws {
+    func updateWordEntry(oldWordEntry: WordEntry, newWordEntry: WordEntry) throws {
         try realm.write {
-            block(wordEntry)
-            try validateWordEntry(wordEntry)
+            do {
+                try validateWordEntry(newWordEntry)
+            } catch WordError.duplicateWord {
+                if oldWordEntry.title != newWordEntry.title {
+                    throw WordError.duplicateWord
+                }
+            }
+            oldWordEntry.title = newWordEntry.title
+            oldWordEntry.example = newWordEntry.example
+            oldWordEntry.explanation = newWordEntry.explanation
         }
     }
 
