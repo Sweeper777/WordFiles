@@ -40,13 +40,18 @@ class WordEditorViewController : FormViewController {
             saveNewEntry()
         }
     }
-
-    private func saveNewEntry() {
+    
+    private func wordEntryFromFormValues() -> WordEntry {
         let values = form.values()
         let wordEntry = WordEntry()
         wordEntry.title = values[tagTitle] as? String ?? ""
         wordEntry.explanation = values[tagExplanation] as? String ?? ""
         wordEntry.example = values[tagExample] as? String ?? ""
+        return wordEntry
+    }
+
+    private func saveNewEntry() {
+        let wordEntry = wordEntryFromFormValues()
         do {
             try DataManager.shared.addWordEntry(wordEntry)
             performSegue(withIdentifier: "unwindToWordList", sender: nil)
@@ -63,13 +68,9 @@ class WordEditorViewController : FormViewController {
     }
 
     private func updateEntry(_ entryToUpdate: WordEntry) {
-        let values = form.values()
+        let wordEntry = wordEntryFromFormValues()
         do {
-            try DataManager.shared.updateWordEntry(entryToUpdate) { entry in
-                entry.title = values[tagTitle] as? String ?? ""
-                entry.explanation = values[tagExplanation] as? String ?? ""
-                entry.example = values[tagExample] as? String ?? ""
-            }
+            try DataManager.shared.updateWordEntry(oldWordEntry: entryToUpdate, newWordEntry: wordEntry)
             performSegue(withIdentifier: "unwindToWordList", sender: nil)
         } catch WordError.duplicateWord {
             showError("An entry with the same title already exists!")
