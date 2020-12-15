@@ -36,7 +36,7 @@ class SentenceEditorViewController : FormViewController {
             $0.tag = tagTags
 
             for tag in (sentenceToEdit?.tags).map(Array.init) ?? [] {
-                SuggestionAccessoryRow<String> {
+                $0 <<< SuggestionAccessoryRow<String> {
                     $0.placeholder = "Tag Name"
                     $0.filterFunction = {
                         input in
