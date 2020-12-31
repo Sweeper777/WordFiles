@@ -16,6 +16,9 @@ class WordEditorViewController : FormViewController {
         form +++ TextRow(tagTitle) { row in
             row.title = "Title"
             row.value = entryToEdit?.title
+        }.cellSetup {
+            cell, row in
+            cell.textField.autocapitalizationType = .none
         }
 
         form +++ Section("explanation")
