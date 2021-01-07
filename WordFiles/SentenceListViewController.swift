@@ -68,7 +68,12 @@ class SentenceListViewController : UITableViewController {
                                               attributes: [.font: UIFont.systemFont(ofSize: 17)],
                                               context: nil)
                                 .height
-        let tagsHeight = TagsPanelView.generatePanelHeightThatFit(maxSize, tags: entry.tags.map(\.name), fontSize: 17)
+        let tagsHeight: CGFloat
+        if entry.tags.isEmpty {
+            tagsHeight = 0
+        } else {
+            tagsHeight = TagsPanelView.generatePanelHeightThatFit(maxSize, tags: entry.tags.map(\.name), fontSize: 17)
+        }
         return sentenceHeight + tagsHeight + 32
     }
 
