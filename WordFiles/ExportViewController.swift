@@ -13,6 +13,12 @@ class ExportViewController : FormViewController {
                 row.value = true
             }
         
+            <<< SwitchRow(tagSentence) {
+                row in
+                row.title = "Sentences"
+                row.value = true
+            }
+        
     }
 }
 
