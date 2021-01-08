@@ -72,4 +72,21 @@ struct AttributedStringExporter {
         return str
     }
     
+    private func exportSentences(_ sentences: Results<SentenceEntry>) -> NSMutableAttributedString {
+        let str = NSMutableAttributedString()
+        for sentence in sentences {
+            str.append(NSAttributedString(string: "Tags: ", attributes: headingsAttributes))
+            if sentence.tags.isEmpty {
+                str.append(NSAttributedString(string: "None", attributes: bodyAttributes))
+            } else {
+                for tag in sentence.tags {
+                    str.append(NSAttributedString(string: tag.name, attributes: tagsAttributes))
+                    str.append(NSAttributedString(string: " ", attributes: bodyAttributes))
+                }
+            }
+            str.append(NSAttributedString(string: "\n\(sentence.sentence)\n\n", attributes: bodyAttributes))
+        }
+        return str
+    }
+    
 }
