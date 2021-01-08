@@ -11,4 +11,16 @@ struct AttributedStringExporter {
     
     let options: Options
     
+    private let alignLeft: NSParagraphStyle = {
+        let mutableParaStyle = NSMutableParagraphStyle()
+        mutableParaStyle.alignment = .left
+        return mutableParaStyle
+    }()
+    
+    private let alignCenter: NSParagraphStyle = {
+        let mutableParaStyle = NSMutableParagraphStyle()
+        mutableParaStyle.alignment = .center
+        return mutableParaStyle
+    }()
+    
 }
