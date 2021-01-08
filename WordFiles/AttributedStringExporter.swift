@@ -89,4 +89,13 @@ struct AttributedStringExporter {
         return str
     }
     
+    func attributedStringFromAppData() -> NSAttributedString {
+        let sentences = DataManager.shared.sentenceEntries
+        let words = DataManager.shared.wordEntries
+        let str = NSMutableAttributedString()
+        str.append(exportWords(words))
+        str.append(NSAttributedString(string: "\n-------\n\n", attributes: bodyAttributes))
+        str.append(exportSentences(sentences))
+        return str
+    }
 }
