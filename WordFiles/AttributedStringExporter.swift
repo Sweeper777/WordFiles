@@ -23,4 +23,8 @@ struct AttributedStringExporter {
         return mutableParaStyle
     }()
     
+    private let boldFont = UIFont.monospacedSystemFont(ofSize: 11, weight: .bold)
+    private let bigFont = UIFont.monospacedSystemFont(ofSize: 16, weight: .bold)
+    private let regularFont = UIFont.monospacedSystemFont(ofSize: 11, weight: .regular)
+    
 }
