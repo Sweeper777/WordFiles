@@ -56,4 +56,20 @@ struct AttributedStringExporter {
         ]
     }
     
+    private func exportWords(_ words: Results<WordEntry>) -> NSMutableAttributedString {
+        let str = NSMutableAttributedString()
+        for word in words {
+            str.append(NSAttributedString(string: word.title + "\n\n", attributes: titleAttributes))
+            if word.explanation.trimmed().isNotEmpty {
+                str.append(NSAttributedString(string: "Explanation: \n", attributes: headingsAttributes))
+                str.append(NSAttributedString(string: word.explanation + "\n\n", attributes: bodyAttributes))
+            }
+            if word.example.trimmed().isNotEmpty {
+                str.append(NSAttributedString(string: "Example: \n", attributes: headingsAttributes))
+                str.append(NSAttributedString(string: word.example + "\n\n", attributes: bodyAttributes))
+            }
+        }
+        return str
+    }
+    
 }
