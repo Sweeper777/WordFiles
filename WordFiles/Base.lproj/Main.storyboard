@@ -37,10 +37,38 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Export" id="6ou-B0-a5l"/>
+                    <connections>
+                        <segue destination="Dun-N8-MAv" kind="show" identifier="showPDF" id="KMI-bh-Cei"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9E-ZA-cEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2279" y="-674"/>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="5Se-SY-w8n">
+            <objects>
+                <viewController id="Dun-N8-MAv" customClass="PDFPreviewViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rQo-T2-f8O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dw1-9a-wF1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dP2-Qj-Vw8">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up" catalog="system" id="uCk-nZ-eWh">
+                            <connections>
+                                <action selector="shareClick" destination="Dun-N8-MAv" id="8Rh-ws-Lfz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="shareButton" destination="uCk-nZ-eWh" id="T75-0Z-bch"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="irM-2e-SPk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3046" y="-674"/>
         </scene>
         <!--Words-->
         <scene sceneID="65W-ts-Wa3">
