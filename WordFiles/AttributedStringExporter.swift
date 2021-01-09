@@ -93,9 +93,15 @@ struct AttributedStringExporter {
         let sentences = DataManager.shared.sentenceEntries
         let words = DataManager.shared.wordEntries
         let str = NSMutableAttributedString()
-        str.append(exportWords(words))
-        str.append(NSAttributedString(string: "\n-------\n\n", attributes: bodyAttributes))
-        str.append(exportSentences(sentences))
+        if options.contains(.includeWords) {
+            str.append(exportWords(words))
+        }
+        if options.contains(.includeWords) && options.contains(.includeSentences) {
+            str.append(NSAttributedString(string: "\n-------\n\n", attributes: bodyAttributes))
+        }
+        if options.contains(.includeSentences) {
+            str.append(exportSentences(sentences))
+        }
         return str
     }
 }
