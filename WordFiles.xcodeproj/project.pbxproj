@@ -20,6 +20,10 @@
 		25EF092EB0A5BE14305C2360 /* WordEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0B6CEB55BCEB4B74C047 /* WordEditorViewController.swift */; };
 		25EF0B077035B88D4212AA08 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0784A69C6DB33357691E /* DataManager.swift */; };
 		5A59338D255F762E003BE429 /* SentenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A59338C255F762E003BE429 /* SentenceCell.xib */; };
+		5A5F92C625A6A13C00A3FE40 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F92C525A6A13C00A3FE40 /* ExportViewController.swift */; };
+		5A5F92CB25A6A37A00A3FE40 /* AttributedStringExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F92CA25A6A37A00A3FE40 /* AttributedStringExporter.swift */; };
+		5A5F92D025A6AB4300A3FE40 /* AttributedStringToPDFConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F92CF25A6AB4300A3FE40 /* AttributedStringToPDFConverter.swift */; };
+		5A75511725A7E807003AD887 /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A75511625A7E807003AD887 /* PDFPreviewViewController.swift */; };
 		5A917DF3031AC10F36BDAA10 /* Pods_WordFilesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5267E483D3D379590F09A91F /* Pods_WordFilesTests.framework */; };
 		5A984FCB254663840014ABB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A984FCA254663840014ABB5 /* AppDelegate.swift */; };
 		5A984FCD254663840014ABB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A984FCC254663840014ABB5 /* SceneDelegate.swift */; };
@@ -64,6 +68,10 @@
 		46316CF014E4FD2E974FA2DE /* Pods-WordFiles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordFiles.release.xcconfig"; path = "Target Support Files/Pods-WordFiles/Pods-WordFiles.release.xcconfig"; sourceTree = "<group>"; };
 		5267E483D3D379590F09A91F /* Pods_WordFilesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordFilesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A59338C255F762E003BE429 /* SentenceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentenceCell.xib; sourceTree = "<group>"; };
+		5A5F92C525A6A13C00A3FE40 /* ExportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
+		5A5F92CA25A6A37A00A3FE40 /* AttributedStringExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringExporter.swift; sourceTree = "<group>"; };
+		5A5F92CF25A6AB4300A3FE40 /* AttributedStringToPDFConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringToPDFConverter.swift; sourceTree = "<group>"; };
+		5A75511625A7E807003AD887 /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		5A984FC7254663840014ABB5 /* WordFiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordFiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A984FCA254663840014ABB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A984FCC254663840014ABB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +184,10 @@
 				25EF07EF6A56A81FA77C84F4 /* SentenceCell.swift */,
 				25EF01BC69229D10F407F9BE /* SentenceEditorViewController.swift */,
 				25EF08FF6B1CD39A436C2D89 /* TagListViewController.swift */,
+				5A5F92C525A6A13C00A3FE40 /* ExportViewController.swift */,
+				5A75511625A7E807003AD887 /* PDFPreviewViewController.swift */,
+				5A5F92CA25A6A37A00A3FE40 /* AttributedStringExporter.swift */,
+				5A5F92CF25A6AB4300A3FE40 /* AttributedStringToPDFConverter.swift */,
 			);
 			path = WordFiles;
 			sourceTree = "<group>";
@@ -440,9 +452,13 @@
 				5A984FCB254663840014ABB5 /* AppDelegate.swift in Sources */,
 				5A984FCD254663840014ABB5 /* SceneDelegate.swift in Sources */,
 				25EF03B6A003CA1FFCB2D9D4 /* WordEntry.swift in Sources */,
+				5A5F92CB25A6A37A00A3FE40 /* AttributedStringExporter.swift in Sources */,
+				5A75511725A7E807003AD887 /* PDFPreviewViewController.swift in Sources */,
+				5A5F92D025A6AB4300A3FE40 /* AttributedStringToPDFConverter.swift in Sources */,
 				25EF061D72A2D77B458D31C5 /* WordListViewController.swift in Sources */,
 				25EF092EB0A5BE14305C2360 /* WordEditorViewController.swift in Sources */,
 				25EF0B077035B88D4212AA08 /* DataManager.swift in Sources */,
+				5A5F92C625A6A13C00A3FE40 /* ExportViewController.swift in Sources */,
 				25EF066F74E4D3A327F54BF5 /* EntryViewController.swift in Sources */,
 				25EF0174E4525CF5E8737EC0 /* SentenceEntry.swift in Sources */,
 				25EF01F7FEDDA1A487FD0F41 /* SentenceListViewController.swift in Sources */,
