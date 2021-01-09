@@ -16,7 +16,7 @@ class AttributedTextToPDFConverter {
     }()
     
     lazy var marginPoint : CGPoint = {
-        return CGPoint(x: 10, y: 10)
+        return CGPoint(x: 50, y: 50)
     }()
     
     lazy var marginSize : CGSize = {
