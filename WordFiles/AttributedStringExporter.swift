@@ -2,14 +2,6 @@ import UIKit
 import RealmSwift
 
 struct AttributedStringExporter {
-    struct Options: OptionSet {
-        let rawValue: Int
-        
-        static let includeWords = Options(rawValue: 1 << 0)
-        static let includeSentences = Options(rawValue: 1 << 1)
-    }
-    
-    let options: Options
     
     private let alignLeft: NSParagraphStyle = {
         let mutableParaStyle = NSMutableParagraphStyle()
@@ -94,22 +86,6 @@ struct AttributedStringExporter {
                 }
             }
             str.append(NSAttributedString(string: "\n\(sentence.sentence)\n\n", attributes: bodyAttributes))
-        }
-        return str
-    }
-    
-    func attributedStringFromAppData() -> NSAttributedString {
-        let sentences = DataManager.shared.sentenceEntries
-        let words = DataManager.shared.wordEntries
-        let str = NSMutableAttributedString()
-        if options.contains(.includeWords) {
-            str.append(exportWords(words))
-        }
-        if options.contains(.includeWords) && options.contains(.includeSentences) {
-            str.append(NSAttributedString(string: "\n-------\n\n", attributes: bodyAttributes))
-        }
-        if options.contains(.includeSentences) {
-            str.append(exportSentences(sentences))
         }
         return str
     }
