@@ -25,7 +25,8 @@ class AttributedTextToPDFConverter {
     
     private var pages: [NSAttributedString] = []
     
-    func pdfWithText(_ text: NSAttributedString) -> Data {
+    
+    func pdfData() -> Data {
         let pdfMetaData = [
             kCGPDFContextCreator: "Word Files",
             kCGPDFContextTitle: "Word Files Data"
@@ -35,7 +36,9 @@ class AttributedTextToPDFConverter {
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
         
         let data = renderer.pdfData { (context) in
-            self.addText(text, context: context)
+            for page in self.pages {
+                self.addText(page, context: context)
+            }
         }
         
         return data
