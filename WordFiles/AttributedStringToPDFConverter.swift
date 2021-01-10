@@ -23,6 +23,7 @@ class AttributedTextToPDFConverter {
         return CGSize(width: self.marginPoint.x * 2 , height: self.marginPoint.y * 2)
     }()
     
+    private var pages: [NSAttributedString] = []
     
     func pdfWithText(_ text: NSAttributedString) -> Data {
         let pdfMetaData = [
@@ -40,8 +41,12 @@ class AttributedTextToPDFConverter {
         return data
     }
     
+    func addNewPage(withText text: NSAttributedString) {
+        pages.append(text)
+    }
+    
     @discardableResult
-    func addText(_ text : NSAttributedString, context : UIGraphicsPDFRendererContext) -> CGFloat {
+    private func addText(_ text : NSAttributedString, context : UIGraphicsPDFRendererContext) -> CGFloat {
         let framesetter = CTFramesetterCreateWithAttributedString(text)
         var currentRange = CFRangeMake(0, 0)
         var done = false
