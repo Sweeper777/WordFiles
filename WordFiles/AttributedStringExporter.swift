@@ -73,8 +73,10 @@ struct AttributedStringExporter {
         return str
     }
     
-    private func exportSentences(_ sentences: Results<SentenceEntry>) -> NSMutableAttributedString {
+    func exportSentences() -> NSMutableAttributedString {
+        let sentences = DataManager.shared.sentenceEntries
         let str = NSMutableAttributedString()
+        str.append(NSAttributedString(string: "Sentences\n\n", attributes: titleAttributes))
         for sentence in sentences {
             str.append(NSAttributedString(string: "Tags: ", attributes: headingsAttributes))
             if sentence.tags.isEmpty {
