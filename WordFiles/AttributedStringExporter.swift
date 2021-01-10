@@ -41,6 +41,13 @@ struct AttributedStringExporter {
         ]
     }
     
+    private var wordEntryAttributes: [NSAttributedString.Key: Any] {
+        [
+            .font: bigFont,
+            .paragraphStyle: alignLeft
+        ]
+    }
+    
     private var bodyAttributes: [NSAttributedString.Key: Any] {
         [
             .font: regularFont,
