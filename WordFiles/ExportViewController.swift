@@ -31,12 +31,17 @@ class ExportViewController : FormViewController {
     
     func exportClick() {
         let values = form.values()
-        let bools = [values[tagWords] as? Bool ?? false, values[tagSentence] as? Bool ?? false]
-        let rawValue = (0..<2).map { bools[$0] ? 1 << $0 : 0 }.reduce(0, +)
-        let option = AttributedStringExporter.Options(rawValue: rawValue)
-        let attrStr = AttributedStringExporter(options: option).attributedStringFromAppData()
-        let data = AttributedTextToPDFConverter().pdfWithText(attrStr)
-        let pdfDocument = PDFDocument(data: data)
+        let includeWords = values[tagWords] as? Bool ?? false
+        let includeSentences = values[tagSentence] as? Bool ?? false
+        let exporter = AttributedStringExporter()
+        let pdfConverter = AttributedTextToPDFConverter()
+        if includeWords {
+            pdfConverter.addNewPage(withText: exporter.exportWords())
+        }
+        if includeSentences {
+            pdfConverter.addNewPage(withText: exporter.exportSentences())
+        }
+        let pdfDocument = PDFDocument(data: pdfConverter.pdfData())
         performSegue(withIdentifier: "showPDF", sender: pdfDocument)
     }
     
