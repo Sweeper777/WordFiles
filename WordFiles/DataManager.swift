@@ -162,6 +162,7 @@ enum WordError: Error {
     case duplicateWord
     case emptyWord
     case noExplanationOrExample
+    case duplicateTags
 }
 
 enum SentenceError: Error {
