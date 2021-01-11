@@ -5,6 +5,7 @@ class DataManager {
     let wordEntries: Results<WordEntry>
     let sentenceEntries: Results<SentenceEntry>
     let tags: Results<Tag>
+    let wordTags: Results<WordTag>
     let realm: Realm!
 
     private init() {
@@ -13,6 +14,7 @@ class DataManager {
             wordEntries = realm.objects(WordEntry.self).sorted(byKeyPath: "title")
             sentenceEntries = realm.objects(SentenceEntry.self).sorted(byKeyPath: "sentence")
             tags = realm.objects(Tag.self).sorted(byKeyPath: "name")
+            wordTags = realm.objects(WordTag.self).sorted(byKeyPath: "name")
             print(realm.configuration.fileURL!)
         } catch let error {
             print(error)
