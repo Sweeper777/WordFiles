@@ -45,6 +45,12 @@ class ExportViewController : FormViewController {
         performSegue(withIdentifier: "showPDF", sender: pdfDocument)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? PDFPreviewViewController,
+           let document = sender as? PDFDocument {
+            vc.document = document
+        }
+    }
 }
 
 let tagWords = "words"
