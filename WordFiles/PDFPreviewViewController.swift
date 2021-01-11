@@ -14,6 +14,10 @@ class PDFPreviewViewController : UIViewController {
     }
     
     @IBAction func shareClick() {
-        
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("WordFiles.pdf")
+        document.write(to: url)
+        let shareSheet = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        shareSheet.popoverPresentationController?.barButtonItem = shareButton
+        present(shareSheet, animated: true, completion: nil)
     }
 }
