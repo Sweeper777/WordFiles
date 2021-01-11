@@ -87,6 +87,11 @@ class DataManager {
             throw WordError.noExplanationOrExample
         } else if wordEntries.filter("title == %@", wordEntry.title).count > 0 {
             throw WordError.duplicateWord
+        } else {
+            let tags = wordEntry.tags.map(\.name)
+            if Set(tags).count != tags.count {
+                throw WordError.duplicateTags
+            }
         }
     }
 
