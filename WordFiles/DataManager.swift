@@ -31,8 +31,21 @@ class DataManager {
 
     func addWordEntry(_ wordEntry: WordEntry) throws {
         try validateWordEntry(wordEntry)
+        let newWordEntry = WordEntry()
+        newWordEntry.title = wordEntry.title
+        newWordEntry.example = wordEntry.example
+        newWordEntry.explanation = wordEntry.explanation
+        for tag in wordEntry.tags {
+            if let existingTag = realm.object(ofType: WordTag.self, forPrimaryKey: tag.name) {
+                newWordEntry.tags.append(existingTag)
+            } else {
+                let newTag = WordTag()
+                newTag.name = tag.name
+                newWordEntry.tags.append(newTag)
+            }
+        }
         try realm.write {
-            realm.add(wordEntry)
+            realm.add(newWordEntry)
         }
     }
 
