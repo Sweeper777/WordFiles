@@ -1,6 +1,7 @@
 import UIKit
 import RealmSwift
 import SCLAlertView
+import TagsPanelView
 
 class WordListViewController : UITableViewController {
     var words: Results<WordEntry>!
@@ -27,6 +28,8 @@ class WordListViewController : UITableViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
+        
+        tableView.register(UINib(nibName: "TextWithTagCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
