@@ -8,6 +8,12 @@ class SentenceEditorViewController : FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let _ = sentenceToEdit?.sentence {
+            title = "Editing Sentence"
+        } else {
+            title = "New Sentence"
+        }
 
         tableView.setEditing(true, animated: false)
 
