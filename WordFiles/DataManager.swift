@@ -120,17 +120,34 @@ class DataManager {
     }
 
     func updateWordEntry(oldWordEntry: WordEntry, newWordEntry: WordEntry) throws {
-        try realm.write {
-            do {
-                try validateWordEntry(newWordEntry)
-            } catch WordError.duplicateWord {
-                if oldWordEntry.title != newWordEntry.title {
-                    throw WordError.duplicateWord
-                }
+        do {
+            try validateWordEntry(newWordEntry)
+        } catch WordError.duplicateWord {
+            if newWordEntry.title != oldWordEntry.title {
+                throw SentenceError.duplicateSentence
             }
+        }
+
+        let oldTags = Array(oldWordEntry.tags)
+        try realm.write {
             oldWordEntry.title = newWordEntry.title
             oldWordEntry.example = newWordEntry.example
             oldWordEntry.explanation = newWordEntry.explanation
+            oldWordEntry.tags.removeAll()
+            for tag in newWordEntry.tags {
+                if let existingTag = realm.object(ofType: WordTag.self, forPrimaryKey: tag.name) {
+                    oldWordEntry.tags.append(existingTag)
+                } else {
+                    let newTag = WordTag()
+                    newTag.name = tag.name
+                    oldWordEntry.tags.append(newTag)
+                }
+            }
+            for oldTag in oldTags {
+                if oldTag.words.count == 0 {
+                    realm.delete(oldTag)
+                }
+            }
         }
     }
 
