@@ -20,7 +20,7 @@ class SentenceListViewController : UITableViewController {
 
     override func viewDidLoad() {
         sentences = tagFilter.flatMap { DataManager.shared.sentences(withTag: $0) } ?? DataManager.shared.sentenceEntries
-        tableView.register(UINib(nibName: "SentenceCell", bundle: nil), forCellReuseIdentifier: "cell")
+        tableView.register(UINib(nibName: "TextWithTagCell", bundle: nil), forCellReuseIdentifier: "cell")
         if tagFilter == nil {
             navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
             tableView.allowsSelectionDuringEditing = true
@@ -48,7 +48,7 @@ class SentenceListViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! SentenceCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TextWithTagCell
         let sentenceEntry = (isFiltering ? filteredSentences : sentences)[indexPath.row]
         cell.prepareForReuse()
         cell.sentenceLabel.text = sentenceEntry.sentence
