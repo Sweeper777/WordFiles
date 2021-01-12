@@ -41,8 +41,13 @@ class WordListViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel?.text = (isFiltering ? filteredWords : words)[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TextWithTagCell
+        let wordEntry = (isFiltering ? filteredWords : words)[indexPath.row]
+        cell.prepareForReuse()
+        cell.sentenceLabel?.text = wordEntry.title
+        cell.tagsView.tagArray = wordEntry.tags.map(\.name)
+        cell.tagsView.tagTextColor = .black
+        cell.tagsView.tagsBackgroundColorsArray = Array(repeating: UIColor(named: "tagBackground")!, count: cell.tagsView.tagArray.count)
         cell.accessoryType = .disclosureIndicator
         return cell
     }
