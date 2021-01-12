@@ -97,7 +97,13 @@ class DataManager {
 
     func deleteWordEntry(_ wordEntry: WordEntry) throws {
         try realm.write {
+            let tags = Array(wordEntry.tags)
             realm.delete(wordEntry)
+            for tag in tags {
+                if tag.words.count == 0 {
+                    realm.delete(tag)
+                }
+            }
         }
     }
 
