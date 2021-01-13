@@ -82,10 +82,16 @@ class WordEditorViewController : FormViewController {
     
     private func wordEntryFromFormValues() -> WordEntry {
         let values = form.values()
+        let tags = (values[tagTags] as? [Any] ?? []).compactMap { $0 as? String }
         let wordEntry = WordEntry()
         wordEntry.title = values[tagTitle] as? String ?? ""
         wordEntry.explanation = values[tagExplanation] as? String ?? ""
         wordEntry.example = values[tagExample] as? String ?? ""
+        for tag in tags {
+            let tagObject = WordTag()
+            tagObject.name = tag
+            wordEntry.tags.append(tagObject)
+        }
         return wordEntry
     }
 
