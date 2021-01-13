@@ -1,5 +1,6 @@
 import Eureka
 import SCLAlertView
+import SuggestionRow
 
 class WordEditorViewController : FormViewController {
     var entryToEdit: WordEntry?
@@ -12,6 +13,8 @@ class WordEditorViewController : FormViewController {
         } else {
             title = "New Word"
         }
+        
+        tableView.setEditing(true, animated: false)
 
         form +++ TextRow(tagTitle) { row in
             row.title = "Title"
@@ -29,6 +32,39 @@ class WordEditorViewController : FormViewController {
         form +++ Section("example")
         <<< TextAreaRow(tagExample) { row in
             row.value = entryToEdit?.example
+        }
+        
+        form +++ MultivaluedSection(multivaluedOptions: [.Delete, .Insert, .Reorder], header: "tags") {
+            $0.addButtonProvider = { section in
+                ButtonRow {
+                    $0.title = "New Tag"
+                }
+            }
+            $0.multivaluedRowToInsertAt = { index in
+                SuggestionAccessoryRow<String> {
+                    $0.placeholder = "Tag Name"
+                    $0.filterFunction = {
+                        input in
+                        DataManager.shared.wordTags.filter("name CONTAINS[c] %@", input).map(\.name)
+                    }
+                }.cellSetup { (cell, row) in
+                    cell.textField.autocapitalizationType = .none
+                }
+            }
+            $0.tag = tagTags
+
+            for tag in (entryToEdit?.tags).map(Array.init) ?? [] {
+                $0 <<< SuggestionAccessoryRow<String> {
+                    $0.placeholder = "Tag Name"
+                    $0.filterFunction = {
+                        input in
+                        DataManager.shared.tags.filter("name CONTAINS[c] %@", input).map(\.name)
+                    }
+                    $0.value = tag.name
+                }.cellSetup { (cell, row) in
+                    cell.textField.autocapitalizationType = .none
+                }
+            }
         }
     }
 
