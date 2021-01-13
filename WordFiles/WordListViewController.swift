@@ -114,7 +114,7 @@ class WordListViewController : UITableViewController {
 extension WordListViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
-        filteredWords = DataManager.shared.wordsMatchingSearchTerm(searchText)
+        filteredWords = DataManager.shared.words(matchingSearchTerm: searchText)
         tableView.reloadData()
     }
 
