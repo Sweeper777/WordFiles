@@ -4,7 +4,7 @@ import SwiftyUtils
 class DataManager {
     let wordEntries: Results<WordEntry>
     let sentenceEntries: Results<SentenceEntry>
-    let tags: Results<Tag>
+    let tags: Results<SentenceTag>
     let wordTags: Results<WordTag>
     let realm: Realm!
 
@@ -13,7 +13,7 @@ class DataManager {
             realm = try Realm()
             wordEntries = realm.objects(WordEntry.self).sorted(byKeyPath: "title")
             sentenceEntries = realm.objects(SentenceEntry.self).sorted(byKeyPath: "sentence")
-            tags = realm.objects(Tag.self).sorted(byKeyPath: "name")
+            tags = realm.objects(SentenceTag.self).sorted(byKeyPath: "name")
             wordTags = realm.objects(WordTag.self).sorted(byKeyPath: "name")
             print(realm.configuration.fileURL!)
         } catch let error {
@@ -54,10 +54,10 @@ class DataManager {
         let newSentenceEntry = SentenceEntry()
         newSentenceEntry.sentence = sentenceEntry.sentence
         for tag in sentenceEntry.tags {
-            if let existingTag = realm.object(ofType: Tag.self, forPrimaryKey: tag.name) {
+            if let existingTag = realm.object(ofType: SentenceTag.self, forPrimaryKey: tag.name) {
                 newSentenceEntry.tags.append(existingTag)
             } else {
-                let newTag = Tag()
+                let newTag = SentenceTag()
                 newTag.name = tag.name
                 newSentenceEntry.tags.append(newTag)
             }
@@ -165,10 +165,10 @@ class DataManager {
             sentenceEntry.sentence = newSentenceEntry.sentence
             sentenceEntry.tags.removeAll()
             for tag in newSentenceEntry.tags {
-                if let existingTag = realm.object(ofType: Tag.self, forPrimaryKey: tag.name) {
+                if let existingTag = realm.object(ofType: SentenceTag.self, forPrimaryKey: tag.name) {
                     sentenceEntry.tags.append(existingTag)
                 } else {
-                    let newTag = Tag()
+                    let newTag = SentenceTag()
                     newTag.name = tag.name
                     sentenceEntry.tags.append(newTag)
                 }
@@ -197,9 +197,9 @@ class DataManager {
     func sentences(withTag tag: String? = nil, matchingSearchTerm searchTerm: String? = nil) -> Results<SentenceEntry>? {
         switch (tag, searchTerm) {
         case (let tag?, let searchTerm?):
-            return realm.object(ofType: Tag.self, forPrimaryKey: tag)?.sentences.filter("sentence CONTAINS[c] %@", searchTerm)
+            return realm.object(ofType: SentenceTag.self, forPrimaryKey: tag)?.sentences.filter("sentence CONTAINS[c] %@", searchTerm)
         case (let tag?, nil):
-            return realm.object(ofType: Tag.self, forPrimaryKey: tag)?.sentences.filter(NSPredicate(value: true))
+            return realm.object(ofType: SentenceTag.self, forPrimaryKey: tag)?.sentences.filter(NSPredicate(value: true))
         case (nil, let searchTerm?):
             return sentenceEntries.filter("sentence CONTAINS[c] %@", searchTerm)
         case (nil, nil):

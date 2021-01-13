@@ -3,7 +3,7 @@ import RealmSwift
 
 class TagListViewController : UITableViewController {
 
-    var tags: Results<Tag>!
+    var tags: Results<SentenceTag>!
 
     override func viewDidLoad() {
         tags = DataManager.shared.tags

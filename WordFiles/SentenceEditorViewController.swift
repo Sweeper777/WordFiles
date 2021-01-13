@@ -67,7 +67,7 @@ class SentenceEditorViewController : FormViewController {
         let sentenceEntry = SentenceEntry()
         sentenceEntry.sentence = sentence
         for tag in tags {
-            let tagObject = Tag()
+            let tagObject = SentenceTag()
             tagObject.name = tag
             sentenceEntry.tags.append(tagObject)
         }

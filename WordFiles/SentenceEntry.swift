@@ -2,10 +2,10 @@ import RealmSwift
 
 class SentenceEntry : Object {
     @objc dynamic var sentence = ""
-    let tags = List<Tag>()
+    let tags = List<SentenceTag>()
 }
 
-class Tag : Object {
+class SentenceTag : Object {
     @objc dynamic var name = ""
     let sentences = LinkingObjects(fromType: SentenceEntry.self, property: "tags")
 
