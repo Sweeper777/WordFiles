@@ -16,24 +16,8 @@ class PDFPreviewViewController : UIViewController {
     @IBAction func shareClick() {
         let url = FileManager.default.temporaryDirectory.appendingPathComponent("WordFiles.pdf")
         document.write(to: url)
-        let shareSheet = UIActivityViewController(activityItems: [url], applicationActivities: [Foo()])
+        let shareSheet = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         shareSheet.popoverPresentationController?.barButtonItem = shareButton
         present(shareSheet, animated: true, completion: nil)
-    }
-}
-
-class Foo: UIActivity {
-    override var activityTitle: String? { "Foo" }
-    override var activityType: UIActivity.ActivityType? { UIActivity.ActivityType("Foo") }
-    override var activityImage: UIImage? { UIImage(systemName: "doc.on.doc.fill") }
-    override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
-        true
-    }
-    override class var activityCategory: UIActivity.Category { .share }
-    override func prepare(withActivityItems activityItems: [Any]) {
-        print("Preparing Foo!")
-    }
-    override func perform() {
-        print("Performed Foo!")
     }
 }
