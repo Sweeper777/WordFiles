@@ -123,16 +123,24 @@
                             <outlet property="delegate" destination="PyE-zT-1aQ" id="84E-lT-A1p"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="My Words" largeTitleDisplayMode="always" id="F1L-8l-kfz">
+                        <barButtonItem key="leftBarButtonItem" title="Tags..." id="AaX-Ja-EuS">
+                            <connections>
+                                <action selector="tagsTapped" destination="PyE-zT-1aQ" id="UuW-GH-8Gk"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aGM-bE-bv3">
                             <connections>
                                 <action selector="addTapped" destination="PyE-zT-1aQ" id="cTs-S7-KXL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="qYO-SL-d9M" kind="presentation" identifier="showWordEditor" modalPresentationStyle="formSheet" id="0nO-mb-Kos"/>
                         <segue destination="HKA-ql-6Wx" kind="show" identifier="showEntry" id="lap-vx-3DX"/>
+                        <segue destination="w1V-yR-7iy" kind="presentation" identifier="showWordTags" modalPresentationStyle="formSheet" id="tzF-GY-2dd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0i-eg-g83" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -154,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zB-cZ-Zec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3119.1999999999998" y="74.212893553223395"/>
+            <point key="canvasLocation" x="4134" y="-621"/>
         </scene>
         <!--My Sentences-->
         <scene sceneID="D4B-Ir-dlV">
@@ -216,7 +224,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ay-M6-nsy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1468" y="1551"/>
+            <point key="canvasLocation" x="951" y="1550"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="x9X-9d-W1c">
@@ -232,7 +240,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dbi-Dc-irS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2279" y="831"/>
+            <point key="canvasLocation" x="1566" y="814"/>
         </scene>
         <!--New Word-->
         <scene sceneID="Y5x-aN-Yfu">
@@ -262,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnl-1c-nw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3119" y="831"/>
+            <point key="canvasLocation" x="2481" y="814"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nj8-Hh-TX8">
@@ -298,7 +306,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgU-Ea-a41" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3118" y="1550"/>
+            <point key="canvasLocation" x="3294" y="1550"/>
         </scene>
         <!--New Sentence-->
         <scene sceneID="NGw-oS-J5t">
@@ -328,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="onv-ia-onU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3958" y="1550"/>
+            <point key="canvasLocation" x="4134" y="1550"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yg6-ls-05F">
@@ -344,14 +352,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCK-Xa-b2A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="2345"/>
+            <point key="canvasLocation" x="4135" y="76"/>
         </scene>
         <!--Tags-->
         <scene sceneID="aET-I2-eON">
             <objects>
                 <tableViewController id="1RT-1l-dbV" customClass="TagListViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7DE-2R-H7U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -387,15 +395,18 @@
                     </navigationItem>
                     <connections>
                         <segue destination="wRr-4N-z6M" kind="show" identifier="showSentencesWithTag" id="6Hg-6g-rrF"/>
+                        <segue destination="PyE-zT-1aQ" kind="show" identifier="showWordsWithTag" id="2PC-j5-54V"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6Q-mY-f19" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1468" y="2345"/>
+            <point key="canvasLocation" x="4134" y="814"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="tzF-GY-2dd"/>
         <segue reference="6Hg-6g-rrF"/>
+        <segue reference="2PC-j5-54V"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="abc" catalog="system" width="128" height="50"/>
