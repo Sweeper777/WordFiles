@@ -1,13 +1,14 @@
 import UIKit
 import RealmSwift
 
+protocol TagProtocol {
+    var name: String { get }
+}
+
+
+
 class TagListViewController : UITableViewController {
 
-    var tags: Results<SentenceTag>!
-
-    override func viewDidLoad() {
-        tags = DataManager.shared.tags
-    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
