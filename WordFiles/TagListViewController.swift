@@ -8,6 +8,10 @@ protocol TagProtocol {
 extension WordTag : TagProtocol {}
 extension SentenceTag : TagProtocol {}
 
+protocol TagFilterableViewController : UIViewController {
+    var tagFilter: String? { get set }
+}
+
 
 class TagListViewController : UITableViewController {
 
