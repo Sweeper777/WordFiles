@@ -5,6 +5,7 @@ import TagsPanelView
 
 class WordListViewController : UITableViewController {
     var words: Results<WordEntry>!
+    var tagFilter: String?
 
     let searchController = UISearchController(searchResultsController: nil)
     var filteredWords: Results<WordEntry>!
