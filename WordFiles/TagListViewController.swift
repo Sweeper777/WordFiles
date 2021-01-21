@@ -5,6 +5,8 @@ protocol TagProtocol {
     var name: String { get }
 }
 
+extension WordTag : TagProtocol {}
+extension SentenceTag : TagProtocol {}
 
 
 class TagListViewController : UITableViewController {
