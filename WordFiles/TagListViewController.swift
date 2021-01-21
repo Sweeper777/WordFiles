@@ -12,6 +12,8 @@ protocol TagFilterableViewController : UIViewController {
     var tagFilter: String? { get set }
 }
 
+extension SentenceListViewController : TagFilterableViewController {}
+extension WordListViewController : TagFilterableViewController {}
 
 class TagListViewController : UITableViewController {
 
