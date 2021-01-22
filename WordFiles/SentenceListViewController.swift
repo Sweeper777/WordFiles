@@ -104,6 +104,10 @@ class SentenceListViewController : UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = (segue.destination as? UINavigationController)?.topViewController as? SentenceEditorViewController {
             vc.sentenceToEdit = sender as? SentenceEntry
+        } else if let vc = (segue.destination as? UINavigationController)?.topViewController as? TagListViewController,
+            let tags = sender as? LazyCollection<AnyCollection<TagProtocol>> {
+            vc.tags = tags
+            vc.secondarySegue = "showSentencesWithTag"
         }
     }
 
@@ -135,7 +139,7 @@ class SentenceListViewController : UITableViewController {
     }
 
     @IBAction func tagsTapped() {
-        performSegue(withIdentifier: "showTags", sender: nil)
+        performSegue(withIdentifier: "showTags", sender: AnyCollection(DataManager.shared.tags.lazy.map { $0 as TagProtocol }).lazy)
     }
 }
 
