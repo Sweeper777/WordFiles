@@ -18,6 +18,7 @@ extension WordListViewController : TagFilterableViewController {}
 class TagListViewController : UITableViewController {
 
     var tags: LazyCollection<AnyCollection<TagProtocol>>!
+    var secondarySegue = ""
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
@@ -29,12 +30,12 @@ class TagListViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel?.text = tags[indexPath.row].name
+        cell.textLabel?.text = tags[AnyIndex(indexPath.row)].name
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showSentencesWithTag", sender: tags[indexPath.row].name)
+        performSegue(withIdentifier: secondarySegue, sender: tags[AnyIndex(indexPath.row)].name)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
