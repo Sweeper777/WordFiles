@@ -111,6 +111,10 @@ class WordListViewController : UITableViewController {
         performSegue(withIdentifier: "showWordEditor", sender: nil)
     }
 
+    @IBAction func tagsTapped() {
+        performSegue(withIdentifier: "showWordTags", sender: AnyCollection(DataManager.shared.wordTags.lazy.map { $0 as TagProtocol }).lazy)
+    }
+    
     @IBAction func unwindFromWordEditor(_ segue: UIStoryboardSegue) {
         tableView.reloadData()
     }
