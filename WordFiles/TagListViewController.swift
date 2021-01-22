@@ -17,6 +17,7 @@ extension WordListViewController : TagFilterableViewController {}
 
 class TagListViewController : UITableViewController {
 
+    var tags: LazyCollection<AnyCollection<TagProtocol>>!
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
