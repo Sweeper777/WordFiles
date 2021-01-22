@@ -100,6 +100,10 @@ class WordListViewController : UITableViewController {
         } else if let vc = segue.destination as? EntryViewController,
                   let entry = sender as? WordEntry {
             vc.entry = entry
+        } else if let vc = (segue.destination as? UINavigationController)?.topViewController as? TagListViewController,
+                  let tags = sender as? LazyCollection<AnyCollection<TagProtocol>> {
+            vc.tags = tags
+            vc.secondarySegue = "showWordsWithTag"
         }
     }
 
@@ -115,7 +119,7 @@ class WordListViewController : UITableViewController {
 extension WordListViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
-        filteredWords = DataManager.shared.words(matchingSearchTerm: searchText)
+        filteredWords = DataManager.shared.words(withTag: tagFilter, matchingSearchTerm: searchText)
         tableView.reloadData()
     }
 
