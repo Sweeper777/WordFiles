@@ -40,7 +40,7 @@ class TagListViewController : UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? SentenceListViewController,
+        if let vc = segue.destination as? TagFilterableViewController,
             let tag = sender as? String {
             vc.tagFilter = tag
         }
