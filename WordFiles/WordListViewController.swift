@@ -19,9 +19,16 @@ class WordListViewController : UITableViewController {
     }
 
     override func viewDidLoad() {
-        words = DataManager.shared.wordEntries
-        tableView.allowsSelectionDuringEditing = true
-        navigationItem.rightBarButtonItems?.append(editButtonItem)
+        words = tagFilter.flatMap { DataManager.shared.words(withTag: $0) } ?? DataManager.shared.wordEntries
+        
+        if tagFilter == nil {
+            navigationItem.rightBarButtonItems?.append(editButtonItem)
+            tableView.allowsSelectionDuringEditing = true
+        } else {
+            title = "Words tagged '\(tagFilter!)'"
+            navigationItem.rightBarButtonItems = []
+            navigationItem.leftBarButtonItems = []
+        }
 
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
