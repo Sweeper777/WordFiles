@@ -1,10 +1,4 @@
-//
-//  AppDelegate.swift
-//  WordFiles
-//
-//  Created by Mulang Su on 26/10/2020.
-//
-
+import RealmSwift
 import UIKit
 
 @main
@@ -13,7 +7,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    migration.enumerateObjects(ofType: "WordEntry") { (old, new) in
+                        new?["date"] = Date.distantPast
+                    }
+                    migration.enumerateObjects(ofType: "SentenceEntry") { (old, new) in
+                        new?["date"] = Date.distantPast
+                    }
+                }
+            })
+
+        Realm.Configuration.defaultConfiguration = config
         return true
     }
 
