@@ -4,6 +4,7 @@ class WordEntry : Object {
     @objc dynamic var title = ""
     @objc dynamic var explanation = ""
     @objc dynamic var example = ""
+    @objc dynamic var date = Date()
     
     let tags = List<WordTag>()
 }
