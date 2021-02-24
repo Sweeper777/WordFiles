@@ -9,6 +9,11 @@ class WordListViewController : UITableViewController {
 
     let searchController = UISearchController(searchResultsController: nil)
     var filteredWords: Results<WordEntry>!
+    var sortByDate = false {
+        didSet {
+            sortButton.menu = generateSortMenu()
+        }
+    }
 
     var isSearchBarEmpty: Bool {
         searchController.searchBar.text?.isEmpty ?? true
