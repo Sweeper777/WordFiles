@@ -23,6 +23,22 @@ class WordListViewController : UITableViewController {
         searchController.isActive && !isSearchBarEmpty
     }
 
+    func generateSortMenu() -> UIMenu {
+        UIMenu(children: [
+            UIAction(title: "By Date", state: sortByDate ? .on : .off) { _ in
+                let sortDesc = [SortDescriptor(keyPath: "date", ascending: false), SortDescriptor(keyPath: "title")]
+                self.words = DataManager.shared.wordEntries.sorted(by: sortDesc)
+                self.tableView.reloadData()
+                self.sortByDate = true
+            },
+            UIAction(title: "By Word", state: !sortByDate ? .on : .off) { _ in
+                self.words = DataManager.shared.wordEntries
+                self.tableView.reloadData()
+                self.sortByDate = false
+            },
+        ])
+    }
+    
     override func viewDidLoad() {
         words = tagFilter.flatMap { DataManager.shared.words(withTag: $0) } ?? DataManager.shared.wordEntries
         
