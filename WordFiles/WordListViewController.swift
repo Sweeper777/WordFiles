@@ -9,6 +9,8 @@ class WordListViewController : UITableViewController {
 
     let searchController = UISearchController(searchResultsController: nil)
     var filteredWords: Results<WordEntry>!
+    
+    @IBOutlet var sortButton: UIBarButtonItem!
     var sortByDate = false {
         didSet {
             sortButton.menu = generateSortMenu()
@@ -59,6 +61,8 @@ class WordListViewController : UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         
         tableView.register(UINib(nibName: "TextWithTagCell", bundle: nil), forCellReuseIdentifier: "cell")
+        
+        sortButton.menu = generateSortMenu()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -125,11 +125,14 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="My Words" largeTitleDisplayMode="always" id="F1L-8l-kfz">
-                        <barButtonItem key="leftBarButtonItem" title="Tags..." id="AaX-Ja-EuS">
-                            <connections>
-                                <action selector="tagsTapped" destination="PyE-zT-1aQ" id="UuW-GH-8Gk"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Tags..." id="AaX-Ja-EuS">
+                                <connections>
+                                    <action selector="tagsTapped" destination="PyE-zT-1aQ" id="UuW-GH-8Gk"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Sort..." id="hj1-bu-ciy"/>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aGM-bE-bv3">
                             <connections>
                                 <action selector="addTapped" destination="PyE-zT-1aQ" id="cTs-S7-KXL"/>
@@ -138,6 +141,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="sortButton" destination="hj1-bu-ciy" id="9nf-Z6-ho3"/>
                         <segue destination="qYO-SL-d9M" kind="presentation" identifier="showWordEditor" modalPresentationStyle="formSheet" id="0nO-mb-Kos"/>
                         <segue destination="HKA-ql-6Wx" kind="show" identifier="showEntry" id="lap-vx-3DX"/>
                         <segue destination="w1V-yR-7iy" kind="presentation" identifier="showWordTags" modalPresentationStyle="formSheet" id="tzF-GY-2dd"/>
