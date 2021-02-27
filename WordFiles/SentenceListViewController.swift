@@ -19,6 +19,12 @@ class SentenceListViewController : UITableViewController {
     }
     
     @IBOutlet var sortButton: UIBarButtonItem!
+    var sortByDate = false {
+        didSet {
+            sortButton.menu = generateSortMenu()
+        }
+    }
+    
 
     override func viewDidLoad() {
         sentences = tagFilter.flatMap { DataManager.shared.sentences(withTag: $0) } ?? DataManager.shared.sentenceEntries
