@@ -25,6 +25,21 @@ class SentenceListViewController : UITableViewController {
         }
     }
     
+    func generateSortMenu() -> UIMenu {
+        UIMenu(children: [
+            UIAction(title: "By Date", state: sortByDate ? .on : .off) { _ in
+                let sortDesc = [SortDescriptor(keyPath: "date", ascending: false), SortDescriptor(keyPath: "sentence")]
+                self.sentences = DataManager.shared.sentenceEntries.sorted(by: sortDesc)
+                self.tableView.reloadData()
+                self.sortByDate = true
+            },
+            UIAction(title: "By Sentence", state: !sortByDate ? .on : .off) { _ in
+                self.sentences = DataManager.shared.sentenceEntries
+                self.tableView.reloadData()
+                self.sortByDate = false
+            },
+        ])
+    }
 
     override func viewDidLoad() {
         sentences = tagFilter.flatMap { DataManager.shared.sentences(withTag: $0) } ?? DataManager.shared.sentenceEntries
@@ -45,6 +60,8 @@ class SentenceListViewController : UITableViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
+        
+        sortButton.menu = generateSortMenu()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
