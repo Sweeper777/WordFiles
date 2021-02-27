@@ -17,6 +17,8 @@ class SentenceListViewController : UITableViewController {
     var isFiltering: Bool {
         searchController.isActive && !isSearchBarEmpty
     }
+    
+    @IBOutlet var sortButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         sentences = tagFilter.flatMap { DataManager.shared.sentences(withTag: $0) } ?? DataManager.shared.sentenceEntries

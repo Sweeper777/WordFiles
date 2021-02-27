@@ -96,7 +96,7 @@
             <objects>
                 <tableViewController id="PyE-zT-1aQ" customClass="WordListViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KXi-B7-llX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -157,7 +157,7 @@
             <objects>
                 <viewController id="HKA-ql-6Wx" customClass="EntryViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Shu-Fl-hQd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="TLG-d6-Y2r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -173,7 +173,7 @@
             <objects>
                 <tableViewController id="wRr-4N-z6M" customClass="SentenceListViewController" customModule="WordFiles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ehV-am-PRh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -192,11 +192,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Sentences" id="a9n-5v-SW5">
-                        <barButtonItem key="leftBarButtonItem" title="Tags..." id="pPm-LL-E1V">
-                            <connections>
-                                <action selector="tagsTapped" destination="wRr-4N-z6M" id="61x-dg-821"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Tags..." id="pPm-LL-E1V">
+                                <connections>
+                                    <action selector="tagsTapped" destination="wRr-4N-z6M" id="61x-dg-821"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Sort..." id="qpl-Bh-F6Z"/>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gag-3a-PhH">
                             <connections>
                                 <action selector="newSentenceTapped" destination="wRr-4N-z6M" id="tRl-h2-hXc"/>
@@ -204,6 +207,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="sortButton" destination="qpl-Bh-F6Z" id="Jqb-kj-2L7"/>
                         <segue destination="ogc-am-MOh" kind="presentation" identifier="showSentenceEditor" modalPresentationStyle="formSheet" id="6Ji-jr-Y3W"/>
                         <segue destination="w1V-yR-7iy" kind="presentation" identifier="showTags" modalPresentationStyle="formSheet" id="6pB-XF-DNS"/>
                     </connections>
@@ -408,7 +412,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tzF-GY-2dd"/>
+        <segue reference="6pB-XF-DNS"/>
         <segue reference="6Hg-6g-rrF"/>
         <segue reference="2PC-j5-54V"/>
     </inferredMetricsTieBreakers>
