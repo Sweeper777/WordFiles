@@ -28,8 +28,7 @@ class SentenceListViewController : UITableViewController {
     func generateSortMenu() -> UIMenu {
         UIMenu(children: [
             UIAction(title: "By Date", state: sortByDate ? .on : .off) { _ in
-                let sortDesc = [SortDescriptor(keyPath: "date", ascending: false), SortDescriptor(keyPath: "sentence")]
-                self.sentences = DataManager.shared.sentenceEntries.sorted(by: sortDesc)
+                self.sentences = DataManager.shared.sentences(sortByDate: true)
                 self.tableView.reloadData()
                 self.sortByDate = true
             },
@@ -171,7 +170,9 @@ class SentenceListViewController : UITableViewController {
 extension SentenceListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
-        filteredSentences = DataManager.shared.sentences(withTag: tagFilter, matchingSearchTerm: searchText)
+        filteredSentences = DataManager.shared.sentences(withTag: tagFilter,
+                                                         matchingSearchTerm: searchText,
+                                                         sortByDate: sortByDate)
         tableView.reloadData()
     }
 }
