@@ -28,7 +28,7 @@ class SentenceListViewController : UITableViewController {
     func generateSortMenu() -> UIMenu {
         UIMenu(children: [
             UIAction(title: "By Date", state: sortByDate ? .on : .off) { _ in
-                self.sentences = DataManager.shared.sentences(sortByDate: true)
+                self.sentences = DataManager.shared.sentences(sortedByDate: true)
                 self.tableView.reloadData()
                 self.sortByDate = true
             },
@@ -172,7 +172,7 @@ extension SentenceListViewController: UISearchResultsUpdating {
         let searchText = searchController.searchBar.text ?? ""
         filteredSentences = DataManager.shared.sentences(withTag: tagFilter,
                                                          matchingSearchTerm: searchText,
-                                                         sortByDate: sortByDate)
+                                                         sortedByDate: sortByDate)
         tableView.reloadData()
     }
 }

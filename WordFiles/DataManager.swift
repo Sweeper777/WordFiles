@@ -181,9 +181,9 @@ class DataManager {
         }
     }
 
-    func words(withTag tag: String? = nil, matchingSearchTerm searchTerm: String? = nil, sortByDate: Bool = false) -> Results<WordEntry>? {
+    func words(withTag tag: String? = nil, matchingSearchTerm searchTerm: String? = nil, sortedByDate: Bool = false) -> Results<WordEntry>? {
         let sortDesc: [SortDescriptor]
-        if sortByDate {
+        if sortedByDate {
             sortDesc = [SortDescriptor(keyPath: "date", ascending: false), SortDescriptor(keyPath: "title")]
         } else {
             sortDesc = [SortDescriptor(keyPath: "title")]
@@ -204,9 +204,9 @@ class DataManager {
         }
     }
 
-    func sentences(withTag tag: String? = nil, matchingSearchTerm searchTerm: String? = nil, sortByDate: Bool = false) -> Results<SentenceEntry>? {
+    func sentences(withTag tag: String? = nil, matchingSearchTerm searchTerm: String? = nil, sortedByDate: Bool = false) -> Results<SentenceEntry>? {
         let sortDesc: [SortDescriptor]
-        if sortByDate {
+        if sortedByDate {
             sortDesc = [SortDescriptor(keyPath: "date", ascending: false), SortDescriptor(keyPath: "sentence")]
         } else {
             sortDesc = [SortDescriptor(keyPath: "sentence")]
