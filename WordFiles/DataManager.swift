@@ -204,16 +204,26 @@ class DataManager {
         }
     }
 
-    func sentences(withTag tag: String? = nil, matchingSearchTerm searchTerm: String? = nil) -> Results<SentenceEntry>? {
+    func sentences(withTag tag: String? = nil, matchingSearchTerm searchTerm: String? = nil, sortByDate: Bool = false) -> Results<SentenceEntry>? {
+        let sortDesc: [SortDescriptor]
+        if sortByDate {
+            sortDesc = [SortDescriptor(keyPath: "date", ascending: false), SortDescriptor(keyPath: "sentence")]
+        } else {
+            sortDesc = [SortDescriptor(keyPath: "sentence")]
+        }
         switch (tag, searchTerm) {
         case (let tag?, let searchTerm?):
             return realm.object(ofType: SentenceTag.self, forPrimaryKey: tag)?.sentences.filter("sentence CONTAINS[c] %@", searchTerm)
+                .sorted(by: sortDesc)
         case (let tag?, nil):
             return realm.object(ofType: SentenceTag.self, forPrimaryKey: tag)?.sentences.filter(NSPredicate(value: true))
+                .sorted(by: sortDesc)
         case (nil, let searchTerm?):
             return sentenceEntries.filter("sentence CONTAINS[c] %@", searchTerm)
+                .sorted(by: sortDesc)
         case (nil, nil):
             return sentenceEntries
+                .sorted(by: sortDesc)
         }
     }
 }
