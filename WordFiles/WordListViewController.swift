@@ -28,8 +28,7 @@ class WordListViewController : UITableViewController {
     func generateSortMenu() -> UIMenu {
         UIMenu(children: [
             UIAction(title: "By Date", state: sortByDate ? .on : .off) { _ in
-                let sortDesc = [SortDescriptor(keyPath: "date", ascending: false), SortDescriptor(keyPath: "title")]
-                self.words = DataManager.shared.wordEntries.sorted(by: sortDesc)
+                self.words = DataManager.shared.words(sortByDate: true)
                 self.tableView.reloadData()
                 self.sortByDate = true
             },
@@ -155,7 +154,9 @@ class WordListViewController : UITableViewController {
 extension WordListViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
-        filteredWords = DataManager.shared.words(withTag: tagFilter, matchingSearchTerm: searchText)
+        filteredWords = DataManager.shared.words(withTag: tagFilter,
+                                                 matchingSearchTerm: searchText,
+                                                 sortByDate: sortByDate)
         tableView.reloadData()
     }
 
