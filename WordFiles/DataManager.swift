@@ -181,16 +181,26 @@ class DataManager {
         }
     }
 
-    func words(withTag tag: String? = nil, matchingSearchTerm searchTerm: String? = nil) -> Results<WordEntry>? {
+    func words(withTag tag: String? = nil, matchingSearchTerm searchTerm: String? = nil, sortByDate: Bool = false) -> Results<WordEntry>? {
+        let sortDesc: [SortDescriptor]
+        if sortByDate {
+            sortDesc = [SortDescriptor(keyPath: "date", ascending: false), SortDescriptor(keyPath: "title")]
+        } else {
+            sortDesc = [SortDescriptor(keyPath: "title")]
+        }
         switch (tag, searchTerm) {
         case (let tag?, let searchTerm?):
             return realm.object(ofType: WordTag.self, forPrimaryKey: tag)?.words.filter("title CONTAINS[c] %@", searchTerm)
+                .sorted(by: sortDesc)
         case (let tag?, nil):
             return realm.object(ofType: WordTag.self, forPrimaryKey: tag)?.words.filter(NSPredicate(value: true))
+                .sorted(by: sortDesc)
         case (nil, let searchTerm?):
             return wordEntries.filter("title CONTAINS[c] %@", searchTerm)
+                .sorted(by: sortDesc)
         case (nil, nil):
             return wordEntries
+                .sorted(by: sortDesc)
         }
     }
 
