@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,10 +16,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="qcX-Gm-kLb">
-                        <rect key="frame" x="8" y="8" width="398" height="114"/>
+                        <rect key="frame" x="16" y="8" width="382" height="114"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nebfkebfkuef ifheoingow hwgiowgowh g hiwohgowrhg wgouhrgo whg wht whg wh twhgu euwghfwna snwfg" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSH-Ky-WRL">
-                                <rect key="frame" x="0.0" y="0.0" width="398" height="114"/>
+                                <rect key="frame" x="0.0" y="0.0" width="382" height="114"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -29,8 +29,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="qcX-Gm-kLb" secondAttribute="bottom" constant="8" id="2ok-k5-8Ue"/>
-                    <constraint firstAttribute="trailing" secondItem="qcX-Gm-kLb" secondAttribute="trailing" constant="8" id="HC0-NL-qQB"/>
-                    <constraint firstItem="qcX-Gm-kLb" firstAttribute="leading" secondItem="TNF-ay-k9G" secondAttribute="leading" constant="8" id="OIL-iD-daA"/>
+                    <constraint firstAttribute="trailing" secondItem="qcX-Gm-kLb" secondAttribute="trailing" constant="16" id="HC0-NL-qQB"/>
+                    <constraint firstItem="qcX-Gm-kLb" firstAttribute="leading" secondItem="TNF-ay-k9G" secondAttribute="leading" constant="16" id="OIL-iD-daA"/>
                     <constraint firstItem="qcX-Gm-kLb" firstAttribute="top" secondItem="TNF-ay-k9G" secondAttribute="top" constant="8" id="Sf1-II-MrN"/>
                 </constraints>
             </tableViewCellContentView>
