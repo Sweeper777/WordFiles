@@ -124,6 +124,16 @@ class WordListViewController : UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { elements in
+            UIMenu(children: [
+                UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc.fill")) { action in
+                    UIPasteboard.general.string = (self.isFiltering ? self.filteredWords : self.words)[indexPath.row].title
+                }
+            ])
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = (segue.destination as? UINavigationController)?.topViewController as? WordEditorViewController,
             let entryToEdit = sender as? WordEntry {
