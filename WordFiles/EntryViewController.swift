@@ -13,11 +13,15 @@ class EntryViewController: FormViewController {
 
         if entry.explanation.trimmed().isNotEmpty {
             form +++ Section("explanation")
-                    <<< LabelRow {
+            <<< TextAreaRow {
                 row in
-                row.title = entry.explanation
+                row.value = entry.explanation
             }.cellUpdate { (cell, row) in
                 cell.textLabel?.numberOfLines = 0
+                cell.textView.isEditable = false
+                cell.textView.isSelectable = true
+                cell.textView.spellCheckingType = .no
+                cell.textView.dataDetectorTypes = []
             }
         }
 
