@@ -21,6 +21,7 @@ class EntryViewController: FormViewController {
             }.cellUpdate { [weak self] (cell, row) in
                 cell.textLabel?.numberOfLines = 0
                 self?.explanationRowIndexPath = row.indexPath
+                print("explanation row update!")
             }
         }
 
@@ -38,30 +39,39 @@ class EntryViewController: FormViewController {
                     exampleShown.value?.toggle()
                 }
             }
-            <<< LabelRow {
+            <<< LabelRow("exampleRow") {
                 row in
                 row.title = entry.example
                 row.hidden = .function([tagExampleShown], { form in
                     !((form.rowBy(tag: tagExampleShown) as? RowOf<Bool>)?.value ?? false)
                 })
-            }.cellUpdate { (cell, row) in
+            }.cellUpdate { [weak self] (cell, row) in
+                print("example row update!", row.indexPath)
                 cell.textLabel?.numberOfLines = 0
+                self?.exampleRowIndexPath = row.indexPath
             }
         }
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let string: String?
+        print(indexPath.section, indexPath.row)
         if indexPath == explanationRowIndexPath {
-            let string = form.rowBy(tag: "explanationRow")?.title
-            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { elements in
+            string = form.rowBy(tag: "explanationRow")?.title
+        } else if indexPath == exampleRowIndexPath {
+            string = form.rowBy(tag: "exampleRow")?.title
+        } else {
+            string = nil
+        }
+        return string.map { stringToCopy in
+            UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { elements in
                 UIMenu(children: [
                     UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc.fill")) { action in
-                        UIPasteboard.general.string = string
+                        UIPasteboard.general.string = stringToCopy
                     }
                 ])
             }
         }
-        return nil
     }
 }
 
