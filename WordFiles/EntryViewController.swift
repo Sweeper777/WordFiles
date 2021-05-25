@@ -2,6 +2,8 @@ import Eureka
 
 class EntryViewController: FormViewController {
     var entry: WordEntry!
+    private var exampleRowIndexPath: IndexPath?
+    private var explanationRowIndexPath: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,15 +15,12 @@ class EntryViewController: FormViewController {
 
         if entry.explanation.trimmed().isNotEmpty {
             form +++ Section("explanation")
-            <<< TextAreaRow {
+            <<< LabelRow("explanationRow") {
                 row in
-                row.value = entry.explanation
-            }.cellUpdate { (cell, row) in
+                row.title = entry.explanation
+            }.cellUpdate { [weak self] (cell, row) in
                 cell.textLabel?.numberOfLines = 0
-                cell.textView.isEditable = false
-                cell.textView.isSelectable = true
-                cell.textView.spellCheckingType = .no
-                cell.textView.dataDetectorTypes = []
+                self?.explanationRowIndexPath = row.indexPath
             }
         }
 
@@ -49,6 +48,20 @@ class EntryViewController: FormViewController {
                 cell.textLabel?.numberOfLines = 0
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        if indexPath == explanationRowIndexPath {
+            let string = form.rowBy(tag: "explanationRow")?.title
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { elements in
+                UIMenu(children: [
+                    UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc.fill")) { action in
+                        UIPasteboard.general.string = string
+                    }
+                ])
+            }
+        }
+        return nil
     }
 }
 
