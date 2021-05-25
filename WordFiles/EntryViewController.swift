@@ -21,7 +21,6 @@ class EntryViewController: FormViewController {
             }.cellUpdate { [weak self] (cell, row) in
                 cell.textLabel?.numberOfLines = 0
                 self?.explanationRowIndexPath = row.indexPath
-                print("explanation row update!")
             }
         }
 
@@ -46,7 +45,6 @@ class EntryViewController: FormViewController {
                     !((form.rowBy(tag: tagExampleShown) as? RowOf<Bool>)?.value ?? false)
                 })
             }.cellUpdate { [weak self] (cell, row) in
-                print("example row update!", row.indexPath)
                 cell.textLabel?.numberOfLines = 0
                 self?.exampleRowIndexPath = row.indexPath
             }
@@ -55,7 +53,6 @@ class EntryViewController: FormViewController {
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let string: String?
-        print(indexPath.section, indexPath.row)
         if indexPath == explanationRowIndexPath {
             string = form.rowBy(tag: "explanationRow")?.title
         } else if indexPath == exampleRowIndexPath {
