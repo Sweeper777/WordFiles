@@ -75,7 +75,7 @@ class SentenceListViewController : UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TextWithTagCell
         let sentenceEntry = (isFiltering ? filteredSentences : sentences)[indexPath.row]
         cell.prepareForReuse()
-        cell.sentenceLabel.text = sentenceEntry.sentence
+        cell.contentLabel.text = sentenceEntry.sentence
         cell.tagsView.tagArray = sentenceEntry.tags.map(\.name)
         cell.tagsView.tagTextColor = .black
         cell.tagsView.tagsBackgroundColorsArray = Array(repeating: UIColor(named: "tagBackground")!, count: cell.tagsView.tagArray.count)

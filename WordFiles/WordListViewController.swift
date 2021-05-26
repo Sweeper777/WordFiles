@@ -76,7 +76,7 @@ class WordListViewController : UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TextWithTagCell
         let wordEntry = (isFiltering ? filteredWords : words)[indexPath.row]
         cell.prepareForReuse()
-        cell.sentenceLabel?.text = wordEntry.title
+        cell.contentLabel?.text = wordEntry.title
         cell.tagsView.tagArray = wordEntry.tags.map(\.name)
         cell.tagsView.tagTextColor = .black
         cell.tagsView.tagsBackgroundColorsArray = Array(repeating: UIColor(named: "tagBackground")!, count: cell.tagsView.tagArray.count)
@@ -138,7 +138,7 @@ class WordListViewController : UITableViewController {
         if let vc = (segue.destination as? UINavigationController)?.topViewController as? WordEditorViewController,
             let entryToEdit = sender as? WordEntry {
             vc.entryToEdit = entryToEdit
-        } else if let vc = segue.destination as? EntryViewController,
+        } else if let vc = segue.destination as? WordEntryViewController,
                   let entry = sender as? WordEntry {
             vc.entry = entry
         } else if let vc = (segue.destination as? UINavigationController)?.topViewController as? TagListViewController,

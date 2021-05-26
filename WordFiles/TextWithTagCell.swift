@@ -2,7 +2,7 @@ import UIKit
 import TagsPanelView
 
 class TextWithTagCell : UITableViewCell {
-    @IBOutlet var sentenceLabel: UILabel!
+    @IBOutlet var contentLabel: UILabel!
     @IBOutlet var stackView: UIStackView!
     var tagsView: TagsPanelView!
 

@@ -4,7 +4,7 @@ import SwiftyUtils
 class DataManager {
     let wordEntries: Results<WordEntry>
     let sentenceEntries: Results<SentenceEntry>
-    let tags: Results<SentenceTag>
+    let sentenceTags: Results<SentenceTag>
     let wordTags: Results<WordTag>
     let realm: Realm!
 
