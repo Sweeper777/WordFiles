@@ -58,7 +58,7 @@ class WordEditorViewController : FormViewController {
                     $0.placeholder = "Tag Name"
                     $0.filterFunction = {
                         input in
-                        DataManager.shared.tags.filter("name CONTAINS[c] %@", input).map(\.name)
+                        DataManager.shared.sentenceTags.filter("name CONTAINS[c] %@", input).map(\.name)
                     }
                     $0.value = tag.name
                 }.cellSetup { (cell, row) in

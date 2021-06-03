@@ -163,7 +163,7 @@ class SentenceListViewController : UITableViewController {
     }
 
     @IBAction func tagsTapped() {
-        performSegue(withIdentifier: "showTags", sender: AnyCollection(DataManager.shared.tags.lazy.map { $0 as TagProtocol }).lazy)
+        performSegue(withIdentifier: "showTags", sender: AnyCollection(DataManager.shared.sentenceTags.lazy.map { $0 as TagProtocol }).lazy)
     }
 }
 

@@ -13,7 +13,7 @@ class DataManager {
             realm = try Realm()
             wordEntries = realm.objects(WordEntry.self).sorted(byKeyPath: "title")
             sentenceEntries = realm.objects(SentenceEntry.self).sorted(byKeyPath: "sentence")
-            tags = realm.objects(SentenceTag.self).sorted(byKeyPath: "name")
+            sentenceTags = realm.objects(SentenceTag.self).sorted(byKeyPath: "name")
             wordTags = realm.objects(WordTag.self).sorted(byKeyPath: "name")
             print(realm.configuration.fileURL!)
         } catch let error {
