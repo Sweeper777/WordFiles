@@ -79,26 +79,14 @@ class SentenceListViewController : UITableViewController {
         cell.tagsView.tagArray = sentenceEntry.tags.map(\.name)
         cell.tagsView.tagTextColor = .black
         cell.tagsView.tagsBackgroundColorsArray = Array(repeating: UIColor(named: "tagBackground")!, count: cell.tagsView.tagArray.count)
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let entry = (isFiltering ? filteredSentences : sentences)[indexPath.row]
-        let maxSize = CGSize(width: tableView.width - 16, height: .greatestFiniteMagnitude)
-        let sentence = entry.sentence
-        let sentenceHeight = (sentence as NSString)
-                                .boundingRect(with: maxSize,
-                                              options: [.usesLineFragmentOrigin],
-                                              attributes: [.font: UIFont.systemFont(ofSize: 17)],
-                                              context: nil)
-                                .height
-        let tagsHeight: CGFloat
-        if entry.tags.isEmpty {
-            tagsHeight = 0
+        if sentenceEntry.tags.isEmpty {
+            cell.tagsViewHeightConstraint.constant = 0
         } else {
-            tagsHeight = TagsPanelView.generatePanelHeightThatFit(maxSize, tags: entry.tags.map(\.name), fontSize: 17)
+            let maxSize = CGSize(width: tableView.width - 16, height: .greatestFiniteMagnitude)
+            cell.tagsViewHeightConstraint.constant =
+                    TagsPanelView.generatePanelHeightThatFit(maxSize, tags: sentenceEntry.tags.map(\.name), fontSize: 17)
         }
-        return sentenceHeight + tagsHeight + 32
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
