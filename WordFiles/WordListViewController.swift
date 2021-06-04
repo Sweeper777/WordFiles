@@ -145,6 +145,11 @@ class WordListViewController : UITableViewController {
     }
     
     @IBAction func unwindFromWordEditor(_ segue: UIStoryboardSegue) {
+        if let tagFilter = tagFilter,
+           DataManager.shared.realm.object(ofType: WordTag.self, forPrimaryKey: tagFilter) == nil {
+            navigationController?.popViewController(animated: true)
+            return
+        }
         tableView.reloadData()
     }
 }
