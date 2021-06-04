@@ -15,7 +15,13 @@ protocol TagFilterableViewController : UIViewController {
 extension SentenceListViewController : TagFilterableViewController {}
 extension WordListViewController : TagFilterableViewController {}
 
+protocol TagListViewControllerDelegate : class {
+    func tagListViewControllerWillDismiss(tagListVC: TagListViewController)
+}
+
 class TagListViewController : UITableViewController {
+
+    weak var delegate: TagListViewControllerDelegate?
 
     var tags: LazyCollection<AnyCollection<TagProtocol>>!
     var secondarySegue = ""
@@ -47,6 +53,7 @@ class TagListViewController : UITableViewController {
     }
 
     @IBAction func doneTapped() {
+        delegate?.tagListViewControllerWillDismiss(tagListVC: self)
         dismiss(animated: true)
     }
 }

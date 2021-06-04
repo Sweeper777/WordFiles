@@ -132,6 +132,7 @@ class WordListViewController : UITableViewController {
                   let tags = sender as? LazyCollection<AnyCollection<TagProtocol>> {
             vc.tags = tags
             vc.secondarySegue = "showWordsWithTag"
+            vc.delegate = self
         }
     }
 
@@ -156,6 +157,10 @@ extension WordListViewController : UISearchResultsUpdating {
                                                  sortedByDate: sortByDate)
         tableView.reloadData()
     }
+}
 
-
+extension WordListViewController : TagListViewControllerDelegate {
+    func tagListViewControllerWillDismiss(tagListVC: TagListViewController) {
+        tableView.reloadData()
+    }
 }
