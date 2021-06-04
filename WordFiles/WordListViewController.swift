@@ -48,7 +48,7 @@ class WordListViewController : UITableViewController {
             navigationItem.rightBarButtonItems = []
             navigationItem.leftBarButtonItems = []
         }
-        navigationItem.rightBarButtonItems?.append(editButtonItem)
+        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
         tableView.allowsSelectionDuringEditing = true
 
         searchController.searchResultsUpdater = self
