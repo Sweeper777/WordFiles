@@ -43,15 +43,14 @@ class SentenceListViewController : UITableViewController {
     override func viewDidLoad() {
         sentences = tagFilter.flatMap { DataManager.shared.sentences(withTag: $0) } ?? DataManager.shared.sentenceEntries
         tableView.register(UINib(nibName: "TextWithTagCell", bundle: nil), forCellReuseIdentifier: "cell")
-        if tagFilter == nil {
-            navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
-            tableView.allowsSelectionDuringEditing = true
-        } else {
+        if tagFilter != nil {
             navigationItem.leftBarButtonItems = []
             navigationItem.rightBarButtonItems = []
             tableView.allowsSelection = false
             title = "Sentences tagged '\(tagFilter!)'"
         }
+        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
+        tableView.allowsSelectionDuringEditing = true
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -90,7 +89,7 @@ class SentenceListViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        tagFilter == nil
+        true
     }
 
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -120,6 +119,7 @@ class SentenceListViewController : UITableViewController {
             let tags = sender as? LazyCollection<AnyCollection<TagProtocol>> {
             vc.tags = tags
             vc.secondarySegue = "showSentencesWithTag"
+            vc.delegate = self
         }
     }
 
@@ -147,6 +147,11 @@ class SentenceListViewController : UITableViewController {
     }
 
     @IBAction func unwindFromSentenceEditor(_ segue: UIStoryboardSegue) {
+        if let tagFilter = tagFilter,
+           DataManager.shared.realm.object(ofType: SentenceTag.self, forPrimaryKey: tagFilter) == nil {
+            navigationController?.popViewController(animated: true)
+            return
+        }
         tableView.reloadData()
     }
 
@@ -161,6 +166,12 @@ extension SentenceListViewController: UISearchResultsUpdating {
         filteredSentences = DataManager.shared.sentences(withTag: tagFilter,
                                                          matchingSearchTerm: searchText,
                                                          sortedByDate: sortByDate)
+        tableView.reloadData()
+    }
+}
+
+extension SentenceListViewController: TagListViewControllerDelegate {
+    func tagListViewControllerWillDismiss(tagListVC: TagListViewController) {
         tableView.reloadData()
     }
 }
