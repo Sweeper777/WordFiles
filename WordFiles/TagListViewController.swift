@@ -26,6 +26,11 @@ class TagListViewController : UITableViewController {
     var tags: LazyCollection<AnyCollection<TagProtocol>>!
     var secondarySegue = ""
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
