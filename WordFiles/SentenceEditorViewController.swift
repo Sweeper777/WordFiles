@@ -68,7 +68,7 @@ class SentenceEditorViewController : FormViewController {
         sentenceEntry.sentence = sentence
         for tag in tags {
             let tagObject = SentenceTag()
-            tagObject.name = tag
+            tagObject.name = tag.trimmed()
             sentenceEntry.tags.append(tagObject)
         }
         do {

@@ -89,7 +89,7 @@ class WordEditorViewController : FormViewController {
         wordEntry.example = values[tagExample] as? String ?? ""
         for tag in tags {
             let tagObject = WordTag()
-            tagObject.name = tag
+            tagObject.name = tag.trimmed()
             wordEntry.tags.append(tagObject)
         }
         return wordEntry
